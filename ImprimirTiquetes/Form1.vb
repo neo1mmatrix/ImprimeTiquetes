@@ -35,7 +35,22 @@
         Dim _DocumentoClave As String = txtTiquete.Lines(14).ToString
 
         Dim _DatosSucursal() As String = {_Cedula, _Sucursal, _Direccion, _Telefono, _Email}
-        Dim _DatosCliente() As String = {_ClienteCedula, _ClienteEmail, _DocumentoNumero, _DocumentoFecha, _DocumentoClave}
+        Dim list As New List(Of String)
+
+        If txtTiquete.Lines(10).ToString.Contains("email") Then
+            list.Add(_ClienteNombre)
+            list.Add(_ClienteCedula)
+            list.Add(_ClienteEmail)
+            list.Add(_DocumentoNumero)
+            list.Add(_DocumentoFecha)
+            list.Add(_DocumentoClave)
+        Else
+            list.Add(_ClienteCedula)
+            list.Add(_ClienteEmail)
+            list.Add(_DocumentoFecha)
+        End If
+
+        Dim _DatosCliente() As String = list.ToArray
 
         StartPrint()
         If prn.PrinterIsOpen = True Then
