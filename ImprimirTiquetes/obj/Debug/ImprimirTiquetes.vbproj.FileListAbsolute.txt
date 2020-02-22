@@ -1,0 +1,11 @@
+C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.vbprojResolveAssemblyReference.cache
+C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.Form1.resources
+C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.Resources.resources
+C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.vbproj.GenerateResource.Cache
+C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\bin\Debug\ImprimirTiquetes.exe.config
+C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\bin\Debug\ImprimirTiquetes.exe
+C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\bin\Debug\ImprimirTiquetes.pdb
+C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\bin\Debug\ImprimirTiquetes.xml
+C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.exe
+C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.xml
+C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.pdb
