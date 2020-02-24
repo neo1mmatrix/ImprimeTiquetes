@@ -1,15 +1,17 @@
-﻿Public Class Form1
+﻿Imports System.Text.RegularExpressions
+Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 
     Private Sub txtTiquete_Click(sender As Object, e As EventArgs) Handles txtTiquete.Click
 
+        If Clipboard.GetText().Contains("www.FacturaProfesional.com") Then
+            txtTiquete.Text = Clipboard.GetText()
+            ImprimirFactura()
+            txtTiquete.Clear()
+        End If
 
-        'If Clipboard.GetText().Contains("www.FacturaProfesional.com") Then
-        '    txtTiquete.Text = Clipboard.GetText()
-        '    ImprimirFactura()
-        'End If
     End Sub
 
     Private Sub ImprimirFactura()
@@ -56,15 +58,17 @@
         If prn.PrinterIsOpen = True Then
             PrintHeader(_Propietario, _DatosSucursal)
             PrintDetalles(_TipoDocumento, _ClienteNombre, _DatosCliente)
-            PrintBody(txtTiquete)
-            'PrintFooter(pie_pagina)
+            PrintTiqueteElectonico(txtTiquete)
+            PrintFooterTiquete()
             EndPrint()
         End If
 
     End Sub
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
+
         ImprimirFactura()
+
     End Sub
 
     Private Sub ReemplazaAcentos()
@@ -83,4 +87,24 @@
         txtTiquete.Lines = tempArray
 
     End Sub
+
+    Private Sub lee()
+
+        Dim tempArray() As String = txtTiquete.Lines
+        Dim _Productos As Boolean = False
+        For i = 0 To tempArray.Length - 1
+
+            If tempArray(i).ToString.Contains("Exentas") Then
+                _Productos = False
+            End If
+            If _Productos Then
+                MsgBox(tempArray(i).ToString)
+            End If
+            If tempArray(i).ToString = "Cant	Uni / Cod / Producto	Total" Then
+                _Productos = True
+            End If
+        Next
+
+    End Sub
+
 End Class

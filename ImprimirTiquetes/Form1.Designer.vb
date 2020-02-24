@@ -58,7 +58,7 @@ Partial Class Form1
         Me.Controls.Add(Me.btnImprimir)
         Me.Controls.Add(Me.txtTiquete)
         Me.Name = "Form1"
-        Me.Text = "Imprime Tiquetes"
+        Me.Text = "Imprime Tiquetes Prueba"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
