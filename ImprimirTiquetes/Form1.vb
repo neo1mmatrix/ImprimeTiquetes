@@ -6,10 +6,15 @@ Public Class Form1
 
     Private Sub txtTiquete_Click(sender As Object, e As EventArgs) Handles txtTiquete.Click
 
+        txtTiquete.Clear()
+
         If Clipboard.GetText().Contains("www.FacturaProfesional.com") Then
             txtTiquete.Text = Clipboard.GetText()
             ImprimirFactura()
             txtTiquete.Clear()
+            Clipboard.Clear()
+        ElseIf Clipboard.GetText().Contains("www.FacturaProfesional.com") Then
+
         End If
 
     End Sub
