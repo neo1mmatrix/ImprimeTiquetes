@@ -103,6 +103,7 @@ Module ImprimeFactura
                 ProductoDetallesCod(p_tiquete.Lines(i).ToString, _Cantidad, _Descripcion, _Codigo, _Subtotal)
                 PrintTiqueteDetallesCod(_Cantidad, _Descripcion, _Subtotal, _Codigo)
             ElseIf p_tiquete.Lines(i).Contains("Desc: ") Then
+                Println("".PadRight(9, _Espacios))
                 Print(p_tiquete.Lines(i).ToString)
             End If
 
@@ -124,10 +125,13 @@ Module ImprimeFactura
                 Print(p_tiquete.Lines(i).ToString)
             ElseIf p_tiquete.Lines(i).Contains("Subtotal") Then
                 Print(p_tiquete.Lines(i).ToString)
-            ElseIf p_tiquete.Lines(i).Contains("Total IVA") Then
+            ElseIf p_tiquete.Lines(i).Contains("Descuento:") Then
+                Print(p_tiquete.Lines(i).ToString)
+            ElseIf p_tiquete.Lines(i).Contains("Total IVA") Or p_tiquete.Lines(i).Contains("I.Ventas:") Then
                 Print(p_tiquete.Lines(i).ToString)
             ElseIf p_tiquete.Lines(i).Contains("Otros Imp") Then
                 Print(p_tiquete.Lines(i).ToString)
+            ElseIf p_tiquete.Lines(i).Contains("Total") And p_tiquete.Lines(i + 1).Contains("Comentarios") Then
                 PrintDashes()
                 _ImprimirLinea = p_tiquete.Lines(i + 1).ToString
                 Print(eCentre + eBigText + eNegritaOn + _ImprimirLinea + eNegritaOff + eSmlText)
@@ -140,7 +144,7 @@ Module ImprimeFactura
                 Print(eLeft + eNegritaOn + _ImprimirLinea + eNegritaOff)
             End If
 
-            If p_tiquete.Lines(i).ToString.Contains("Documento emitido conforme lo establecido") Then
+            If p_tiquete.Lines(i).ToString.Contains("Documento emitido conforme lo establecido") Or p_tiquete.Lines(i).ToString.Contains("Documento electronico emitido mediante") Then
                 _ImprimirLinea = p_tiquete.Lines(i).ToString
                 Print(eLeft + _ImprimirLinea)
                 _ImprimirLinea = p_tiquete.Lines(i + 1).ToString
@@ -163,9 +167,7 @@ Module ImprimeFactura
 
         Dim _TamannoDescripcion As Integer = _LongitudImpresion - 23
         Dim _DescripcionTemporal As String = p_descripcion
-        p_cantidad = p_cantidad.Replace(".", ",")
-        Dim _Cantidad As String = convertir_formato_miles_decimales(CDbl(p_cantidad))
-        _Cantidad = _Cantidad.Replace(",", ".")
+        Dim _Cantidad As String = p_cantidad
         'IMPRIME LA CANTIDAD DEL ARTICULO
         If _Cantidad.Length <= 7 Then
             Println("".PadRight(7 - _Cantidad.Length, _Espacios))
@@ -220,9 +222,7 @@ Module ImprimeFactura
 
         Dim _TamannoDescripcion As Integer = _LongitudImpresion - 23
         Dim _DescripcionTemporal As String = p_descripcion
-        p_cantidad = p_cantidad.Replace(".", ",")
-        Dim _Cantidad As String = convertir_formato_miles_decimales(CDbl(p_cantidad))
-        _Cantidad = _Cantidad.Replace(",", ".")
+        Dim _Cantidad As String = p_cantidad
         pCodigo = pCodigo & " /"
         'IMPRIME LA CANTIDAD DEL ARTICULO
         If _Cantidad.Length <= 7 Then
@@ -257,7 +257,7 @@ Module ImprimeFactura
 
             Println("".PadRight(9, _Espacios))
             Print(p_descripcion.Substring((_TamannoDescripcion - 1), p_descripcion.Length - (_TamannoDescripcion - 1)))
-            Println("".PadRight(8, _Espacios))
+            Println("".PadRight(9, _Espacios))
             Println("Cod: / ")
             Print(pCodigo)
         Else
@@ -272,7 +272,7 @@ Module ImprimeFactura
             Else
                 Print("##.###.###.##")
             End If
-            Println("".PadRight(8, _Espacios))
+            Println("".PadRight(9, _Espacios))
             Println("Cod: / ")
             Print(pCodigo)
         End If

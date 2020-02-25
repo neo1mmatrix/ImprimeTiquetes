@@ -72,7 +72,14 @@ Public Class Form1
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
 
-        ImprimirFactura()
+        If Clipboard.GetText().Contains("www.FacturaProfesional.com") Then
+            txtTiquete.Text = Clipboard.GetText()
+            ImprimirFactura()
+            txtTiquete.Clear()
+            Clipboard.Clear()
+        ElseIf Clipboard.GetText().Contains("www.FacturaProfesional.com") Then
+
+        End If
 
     End Sub
 
