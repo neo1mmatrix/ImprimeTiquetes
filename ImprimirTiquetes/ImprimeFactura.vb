@@ -119,7 +119,7 @@ Module ImprimeFactura
 
         Next
 
-        For i As Integer = _LineaNumero To p_tiquete.Lines().Length - 1
+        For i As Integer = _LineaNumero To p_tiquete.Lines().Length - 2
 
             If p_tiquete.Lines(i).Contains("Exentas") Or p_tiquete.Lines(i).Contains("Gravadas") Then
                 Print(p_tiquete.Lines(i).ToString)
