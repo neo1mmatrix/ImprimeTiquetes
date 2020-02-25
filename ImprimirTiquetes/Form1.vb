@@ -44,7 +44,7 @@ Public Class Form1
         Dim _DatosSucursal() As String = {_Cedula, _Sucursal, _Direccion, _Telefono, _Email}
         Dim list As New List(Of String)
 
-        If txtTiquete.Lines(10).ToString.Contains("email") Then
+        If txtTiquete.Lines(10).ToString.Contains("E-mail") Then
             list.Add(_ClienteNombre)
             list.Add(_ClienteCedula)
             list.Add(_ClienteEmail)
