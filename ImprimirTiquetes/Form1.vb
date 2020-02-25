@@ -7,15 +7,7 @@ Public Class Form1
     Private Sub txtTiquete_Click(sender As Object, e As EventArgs) Handles txtTiquete.Click
 
         txtTiquete.Clear()
-
-        If Clipboard.GetText().Contains("www.FacturaProfesional.com") Then
-            txtTiquete.Text = Clipboard.GetText()
-            ImprimirFactura()
-            txtTiquete.Clear()
-            Clipboard.Clear()
-        ElseIf Clipboard.GetText().Contains("www.FacturaProfesional.com") Then
-            ImprimeBn()
-        End If
+        CompruebaTipoFactura()
 
     End Sub
 
@@ -81,14 +73,7 @@ Public Class Form1
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
 
-        If Clipboard.GetText().Contains("www.FacturaProfesional.com") Then
-            txtTiquete.Text = Clipboard.GetText()
-            ImprimirFactura()
-            txtTiquete.Clear()
-            Clipboard.Clear()
-        ElseIf Clipboard.GetText().Contains("BN-SERVICIOS") Then
-            ImprimeBn()
-        End If
+        CompruebaTipoFactura()
 
     End Sub
 
@@ -106,6 +91,21 @@ Public Class Form1
         Next
 
         txtTiquete.Lines = tempArray
+
+    End Sub
+
+    Private Sub CompruebaTipoFactura()
+
+        If Clipboard.GetText().Contains("www.FacturaProfesional.com") Then
+            txtTiquete.Text = Clipboard.GetText()
+            ImprimirFactura()
+            txtTiquete.Clear()
+            Clipboard.Clear()
+        ElseIf Clipboard.GetText().Contains("BN-SERVICIOS") Then
+            ImprimeBn()
+        Else
+            MsgBox("FORMATO NO RECONOCIDO")
+        End If
 
     End Sub
 
