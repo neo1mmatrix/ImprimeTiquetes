@@ -34,7 +34,7 @@ Public Class Form1
         Dim _Email As String = txtTiquete.Lines(6).ToString
 
         Dim _TipoDocumento As String = txtTiquete.Lines(7).ToString
-        Dim _ClienteNombre As String = txtTiquete.Lines(8).ToString.Replace(vbTab, " ")
+        Dim _ClienteNombre As String = txtTiquete.Lines(8).ToString.Replace(vbTab, " ").ToUpper
         Dim _ClienteCedula As String = txtTiquete.Lines(9).ToString
         Dim _ClienteEmail As String = txtTiquete.Lines(10).ToString
         Dim _DocumentoNumero As String = txtTiquete.Lines(11).ToString

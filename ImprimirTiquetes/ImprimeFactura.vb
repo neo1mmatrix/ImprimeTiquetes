@@ -131,9 +131,9 @@ Module ImprimeFactura
                 Print(p_tiquete.Lines(i).ToString)
             ElseIf p_tiquete.Lines(i).Contains("Otros Imp") Then
                 Print(p_tiquete.Lines(i).ToString)
-            ElseIf p_tiquete.Lines(i).Contains("Total") And p_tiquete.Lines(i + 1).Contains("Comentarios") Then
+            ElseIf p_tiquete.Lines(i).Contains("Total:" & vbTab) Then
                 PrintDashes()
-                _ImprimirLinea = p_tiquete.Lines(i + 1).ToString
+                _ImprimirLinea = p_tiquete.Lines(i).ToString
                 Print(eCentre + eBigText + eNegritaOn + _ImprimirLinea + eNegritaOff + eSmlText)
                 PrintDashes()
             End If
