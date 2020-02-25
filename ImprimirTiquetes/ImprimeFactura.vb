@@ -279,7 +279,7 @@ Module ImprimeFactura
 
     End Sub
 
-
+    'Imprime la cabecera de la empresa, contiene los datos de la misma
     Public Sub PrintHeader(ByVal p_Empresa As String, ByVal p_Datos As Array)
         Print(eInit + eSmlText + eCentre + "==============================================")
         Print(eBigText + eNegritaOn + eCentre + p_Empresa + eNegritaOff)
@@ -290,6 +290,7 @@ Module ImprimeFactura
         Print(" ")
     End Sub
 
+    'Imprime los datos de la venta, el cliente y otros datos
     Public Sub PrintDetalles(ByVal p_TipoDocumento As String, ByVal p_Cliente As String, ByVal p_Detalles As Array)
 
         Print(eCentre + eNegritaOn + p_TipoDocumento + eCentre)
@@ -324,6 +325,7 @@ Module ImprimeFactura
         prn.ClosePrint()
     End Sub
 
+    'Divide los datos de los productos en Cantidad, Precio, Descripcion Y Subtotal
     Private Sub ProductoDetalles(ByVal pLinea As String, ByRef pCantidad As String, ByRef pDescripcion As String, ByRef pSubtotal As String)
 
         Dim _Distancia As Integer = 0
@@ -356,6 +358,8 @@ Module ImprimeFactura
 
     End Sub
 
+
+    'Divide los datos de los productos en Cantidad, Precio, Descripcion, Subtotal y Codigo
     Private Sub ProductoDetallesCod(ByVal pLinea As String, ByRef pCantidad As String, ByRef pDescripcion As String, ByRef pCodigo As String, ByRef pSubtotal As String)
 
         Dim _Distancia As Integer = 0

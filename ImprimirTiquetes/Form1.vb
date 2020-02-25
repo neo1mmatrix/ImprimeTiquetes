@@ -14,7 +14,7 @@ Public Class Form1
             txtTiquete.Clear()
             Clipboard.Clear()
         ElseIf Clipboard.GetText().Contains("www.FacturaProfesional.com") Then
-
+            ImprimeBn()
         End If
 
     End Sub
@@ -70,6 +70,15 @@ Public Class Form1
 
     End Sub
 
+    Private Sub ImprimeBn()
+        StartPrint()
+        If prn.PrinterIsOpen = True Then
+            PrintTiqueteBn(txtTiquete)
+            PrintFooterBn()
+            EndPrint()
+        End If
+    End Sub
+
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
 
         If Clipboard.GetText().Contains("www.FacturaProfesional.com") Then
@@ -77,8 +86,8 @@ Public Class Form1
             ImprimirFactura()
             txtTiquete.Clear()
             Clipboard.Clear()
-        ElseIf Clipboard.GetText().Contains("www.FacturaProfesional.com") Then
-
+        ElseIf Clipboard.GetText().Contains("BN-SERVICIOS") Then
+            ImprimeBn()
         End If
 
     End Sub
