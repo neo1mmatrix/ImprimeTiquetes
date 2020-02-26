@@ -15,7 +15,6 @@ Public Class Form1
 
         'Elimina las lineas en blanco y las vacias
         txtTiquete.Lines = txtTiquete.Lines.Where(Function(line) line.Trim <> String.Empty).ToArray()
-        txtTiquete.Lines = txtTiquete.Lines.Where(Function(line) Not line.Contains("Telefono")).ToArray()
         ReemplazaAcentos()
 
         Dim _TiqueteElectronico As String = txtTiquete.Text
@@ -37,7 +36,14 @@ Public Class Form1
         Dim _DatosSucursal() As String = {_Cedula, _Sucursal, _Direccion, _Telefono, _Email}
         Dim list As New List(Of String)
 
-        If txtTiquete.Lines(10).ToString.Contains("E-mail") Then
+        If txtTiquete.Lines(11).ToString.Contains("E-mail") Then
+            _ClienteEmail = txtTiquete.Lines(11).ToString
+            _DocumentoNumero = txtTiquete.Lines(12).ToString
+            _DocumentoFecha = txtTiquete.Lines(13).ToString
+            _DocumentoClave = txtTiquete.Lines(15).ToString
+        End If
+
+        If txtTiquete.Lines(10).ToString.Contains("E-mail") Or txtTiquete.Lines(11).ToString.Contains("E-mail") Then
             list.Add(_ClienteCedula)
             list.Add(_ClienteEmail)
             list.Add(_DocumentoNumero)
