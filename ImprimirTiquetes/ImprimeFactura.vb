@@ -140,7 +140,7 @@ Module ImprimeFactura
 
             If p_tiquete.Lines(i).ToString.Contains("Comentarios") Then
                 _LineaNumero = i
-                _ImprimirLinea = p_tiquete.Lines(i).ToString.Replace("%", " ")
+                _ImprimirLinea = p_tiquete.Lines(i).ToString.Replace("%", " ").ToUpper
                 Print(eLeft + eNegritaOn + _ImprimirLinea + eNegritaOff)
             End If
 
