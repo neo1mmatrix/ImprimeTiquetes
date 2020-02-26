@@ -110,6 +110,7 @@ Public Class Form1
             txtTiquete.Clear()
             Clipboard.Clear()
         Else
+            txtTiquete.Text = Clipboard.GetText()
             MsgBox("FORMATO NO RECONOCIDO")
         End If
 
