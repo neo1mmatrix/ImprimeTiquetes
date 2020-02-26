@@ -48,7 +48,7 @@ Module ImprimeFactura
         Dim _Descripcion As String = ""
         Dim _Subtotal As String = ""
 
-        For i As Integer = 0 To linea1.Lines().Length - 1
+        For i As Integer = 0 To linea1.Lines().Length - 4
             _ImprimirLinea = linea1.Lines(i).ToString
 
             If i = 0 Then

@@ -63,6 +63,8 @@ Public Class Form1
     End Sub
 
     Private Sub ImprimeBn()
+
+        FormateoBn()
         StartPrint()
         If prn.PrinterIsOpen = True Then
             PrintTiqueteBn(txtTiquete)
@@ -94,6 +96,7 @@ Public Class Form1
 
     End Sub
 
+    'Selecciona El tipo de Factura a Imprimir
     Private Sub CompruebaTipoFactura()
 
         If Clipboard.GetText().Contains("www.FacturaProfesional.com") Then
@@ -102,30 +105,35 @@ Public Class Form1
             txtTiquete.Clear()
             Clipboard.Clear()
         ElseIf Clipboard.GetText().Contains("BN-SERVICIOS") Then
+            txtTiquete.Text = Clipboard.GetText()
             ImprimeBn()
+            txtTiquete.Clear()
+            Clipboard.Clear()
         Else
             MsgBox("FORMATO NO RECONOCIDO")
         End If
 
     End Sub
 
-    Private Sub lee()
+    'Formatea el Texto del tiquete del BN para eleminar saltos de linea innecesarios
+    Private Sub FormateoBn()
 
         Dim tempArray() As String = txtTiquete.Lines
         Dim _Productos As Boolean = False
-        For i = 0 To tempArray.Length - 1
+        Dim list As New List(Of String)
 
-            If tempArray(i).ToString.Contains("Exentas") Then
-                _Productos = False
+        For i = 0 To tempArray.Length - 2
+            If tempArray(i).Length > 0 And tempArray(i).Substring(tempArray(i).Length - 1, 1) = ":" Then
+                list.Add(tempArray(i) & " " & tempArray(i + 1))
+                i += 1
+            Else
+                list.Add(tempArray(i))
             End If
-            If _Productos Then
-                MsgBox(tempArray(i).ToString)
-            End If
-            If tempArray(i).ToString = "Cant	Uni / Cod / Producto	Total" Then
-                _Productos = True
-            End If
+
         Next
 
+        txtTiquete.Clear()
+        txtTiquete.Lines = list.ToArray
     End Sub
 
 End Class
