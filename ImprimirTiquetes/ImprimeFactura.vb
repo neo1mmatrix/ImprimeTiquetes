@@ -297,7 +297,9 @@ Module ImprimeFactura
         Print(eLeft + p_Cliente + eNegritaOff)
 
         For Each Value As String In p_Detalles
-            Print(Value)
+            If Value <> "" Then
+                Print(Value)
+            End If
         Next
         Print(" ")
 

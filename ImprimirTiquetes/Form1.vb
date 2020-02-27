@@ -27,33 +27,40 @@ Public Class Form1
 
         Dim _TipoDocumento As String = txtTiquete.Lines(7).ToString
         Dim _ClienteNombre As String = txtTiquete.Lines(8).ToString.Replace(vbTab, " ").ToUpper
-        Dim _ClienteCedula As String = txtTiquete.Lines(9).ToString
-        Dim _ClienteEmail As String = txtTiquete.Lines(10).ToString
-        Dim _DocumentoNumero As String = txtTiquete.Lines(11).ToString
-        Dim _DocumentoFecha As String = txtTiquete.Lines(12).ToString
-        Dim _DocumentoClave As String = txtTiquete.Lines(14).ToString
+        Dim _ClienteCedula As String = ""
+        Dim _ClienteEmail As String = ""
+        Dim _DocumentoNumero As String = ""
+        Dim _DocumentoFecha As String = ""
+        Dim _DocumentoClave As String = ""
 
         Dim _DatosSucursal() As String = {_Cedula, _Sucursal, _Direccion, _Telefono, _Email}
         Dim list As New List(Of String)
 
-        If txtTiquete.Lines(11).ToString.Contains("E-mail") Then
-            _ClienteEmail = txtTiquete.Lines(11).ToString
-            _DocumentoNumero = txtTiquete.Lines(12).ToString
-            _DocumentoFecha = txtTiquete.Lines(13).ToString
-            _DocumentoClave = txtTiquete.Lines(15).ToString
-        End If
+        Dim tempArray() As String
+        tempArray = txtTiquete.Lines
 
-        If txtTiquete.Lines(10).ToString.Contains("E-mail") Or txtTiquete.Lines(11).ToString.Contains("E-mail") Then
-            list.Add(_ClienteCedula)
-            list.Add(_ClienteEmail)
-            list.Add(_DocumentoNumero)
-            list.Add(_DocumentoFecha)
-            list.Add(_DocumentoClave)
-        Else
-            list.Add(_ClienteCedula)
-            list.Add(_ClienteEmail)
-            list.Add(_DocumentoFecha)
-        End If
+        For i = 9 To tempArray.Length - 20
+            If tempArray(i).Contains("Identificacion") Then
+                _ClienteCedula = tempArray(i)
+                list.Add(_ClienteCedula)
+            End If
+            If tempArray(i).Contains("E-mail") Then
+                _ClienteEmail = tempArray(i)
+                list.Add(_ClienteEmail)
+            End If
+            If tempArray(i).Contains("Documento") Then
+                _DocumentoNumero = tempArray(i)
+                list.Add(_DocumentoNumero)
+            End If
+            If tempArray(i).Contains("Fecha") Then
+                _DocumentoFecha = tempArray(i)
+                list.Add(_DocumentoFecha)
+            End If
+            If tempArray(i).Contains("Clave") Then
+                _DocumentoClave = tempArray(i)
+                list.Add(_DocumentoClave)
+            End If
+        Next
 
         Dim _DatosCliente() As String = list.ToArray
 
@@ -70,6 +77,7 @@ Public Class Form1
 
     Private Sub ImprimeBn()
 
+        txtTiquete.Lines = txtTiquete.Lines.Where(Function(line) line.Trim <> String.Empty).ToArray()
         FormateoBn()
         StartPrint()
         If prn.PrinterIsOpen = True Then
