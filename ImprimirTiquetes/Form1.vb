@@ -118,14 +118,17 @@ Public Class Form1
             ImprimirFactura()
             txtTiquete.Clear()
             Clipboard.Clear()
+            Me.Close()
         ElseIf Clipboard.GetText().Contains("BN-SERVICIOS") Then
             txtTiquete.Text = Clipboard.GetText()
             ImprimeBn()
             txtTiquete.Clear()
             Clipboard.Clear()
+            Me.Close()
         Else
             txtTiquete.Text = Clipboard.GetText()
             MsgBox("FORMATO NO RECONOCIDO")
+            Me.Close()
         End If
 
     End Sub
