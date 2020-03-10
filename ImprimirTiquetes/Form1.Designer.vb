@@ -22,8 +22,12 @@ Partial Class Form1
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.txtTiquete = New System.Windows.Forms.TextBox()
         Me.btnImprimir = New System.Windows.Forms.Button()
+        Me.timerCuentaRegresiva = New System.Windows.Forms.Timer(Me.components)
+        Me.lbSegundos = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'txtTiquete
@@ -50,13 +54,30 @@ Partial Class Form1
         Me.btnImprimir.Text = "Imprimir"
         Me.btnImprimir.UseVisualStyleBackColor = True
         '
+        'timerCuentaRegresiva
+        '
+        Me.timerCuentaRegresiva.Interval = 1000
+        '
+        'lbSegundos
+        '
+        Me.lbSegundos.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lbSegundos.AutoSize = True
+        Me.lbSegundos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbSegundos.Location = New System.Drawing.Point(12, 654)
+        Me.lbSegundos.Name = "lbSegundos"
+        Me.lbSegundos.Size = New System.Drawing.Size(15, 16)
+        Me.lbSegundos.TabIndex = 2
+        Me.lbSegundos.Text = "0"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(360, 687)
+        Me.Controls.Add(Me.lbSegundos)
         Me.Controls.Add(Me.btnImprimir)
         Me.Controls.Add(Me.txtTiquete)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Imprime Tiquetes Prueba"
@@ -67,4 +88,6 @@ Partial Class Form1
 
     Friend WithEvents txtTiquete As TextBox
     Friend WithEvents btnImprimir As Button
+    Friend WithEvents timerCuentaRegresiva As Timer
+    Friend WithEvents lbSegundos As Label
 End Class

@@ -9,4 +9,3 @@ C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTique
 C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.xml
 C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.pdb
 C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.vbprojAssemblyReference.cache
-C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.vbproj.CoreCompileInputs.cache

@@ -1,6 +1,12 @@
 ﻿Imports System.Text.RegularExpressions
 Public Class Form1
+
+    Dim _Segundos As Integer = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        _Segundos = 0
+        lbSegundos.Visible = False
+        timerCuentaRegresiva.Start()
 
     End Sub
 
@@ -118,17 +124,14 @@ Public Class Form1
             ImprimirFactura()
             txtTiquete.Clear()
             Clipboard.Clear()
-            Me.Close()
         ElseIf Clipboard.GetText().Contains("BN-SERVICIOS") Then
             txtTiquete.Text = Clipboard.GetText()
             ImprimeBn()
             txtTiquete.Clear()
             Clipboard.Clear()
-            Me.Close()
         Else
             txtTiquete.Text = Clipboard.GetText()
             MsgBox("FORMATO NO RECONOCIDO")
-            Me.Close()
         End If
 
     End Sub
@@ -147,11 +150,18 @@ Public Class Form1
             Else
                 list.Add(tempArray(i))
             End If
-
         Next
 
         txtTiquete.Clear()
         txtTiquete.Lines = list.ToArray
     End Sub
 
+    Private Sub TimerCuentaRegresiva_Tick(sender As Object, e As EventArgs) Handles timerCuentaRegresiva.Tick
+        _Segundos += 1
+        lbSegundos.Text = CStr(15 - _Segundos)
+        lbSegundos.Visible = True
+        If _Segundos = 15 Then
+            Me.Close()
+        End If
+    End Sub
 End Class
