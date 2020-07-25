@@ -23,11 +23,11 @@ Module ImprimeFactura
     Public Const eCol3 As String = Chr(27) + Chr(36) + "45L" + "0H"
     Public Const clear As String = Chr(27) + Chr(60)
     Public prn As New RawPrinterHelper
-    Public _LongitudImpresion As Integer = 0
+    Public _LongitudImpresion As Integer
     Public Const _Espacios As String = " "
     'Para imprimir con conexion local se necesita colocar
     '\\Desktop-feria\epson termica
-    Public PrinterNameTermica As String = ""
+    Public PrinterNameTermica As String
 
     Public Sub StartPrint()
         prn.OpenPrint(PrinterNameTermica)

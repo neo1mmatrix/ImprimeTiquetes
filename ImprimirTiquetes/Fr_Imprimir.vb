@@ -183,7 +183,7 @@ Public Class Fr_Imprimir
 
         _TipoImpresora = My.Settings.TipoImpresora
         _ImpresoraMatrix = My.Settings.Matrix
-        _ImpresoraTermica = My.Settings.TipoImpresora
+        _ImpresoraTermica = My.Settings.Termica
         _LongitudImpresion = My.Settings.LongitudLinea
         PrinterNameTermica = _ImpresoraTermica
 
