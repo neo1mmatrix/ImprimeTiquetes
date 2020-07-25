@@ -195,4 +195,14 @@ Public Class Fr_Imprimir
         Ayuda.Show()
 
     End Sub
+
+    Private Sub Fr_Imprimir_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+
+        If _TipoImpresora = 0 Then
+            MsgBox("Necesita Configurar la Impresión")
+            timerCuentaRegresiva.Stop()
+            Fr_Configuracion.Show()
+        End If
+
+    End Sub
 End Class

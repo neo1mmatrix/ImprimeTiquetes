@@ -82,7 +82,7 @@ Partial Class Fr_Imprimir
         Me.btnAyuda.Text = "Ayuda"
         Me.btnAyuda.UseVisualStyleBackColor = True
         '
-        'Form1
+        'Fr_Imprimir
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -92,7 +92,7 @@ Partial Class Fr_Imprimir
         Me.Controls.Add(Me.btnImprimir)
         Me.Controls.Add(Me.txtTiquete)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "Form1"
+        Me.Name = "Fr_Imprimir"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Imprime Tiquetes"
         Me.ResumeLayout(False)
