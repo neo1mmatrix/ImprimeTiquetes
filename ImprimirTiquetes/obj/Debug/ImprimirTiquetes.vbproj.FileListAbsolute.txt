@@ -9,3 +9,17 @@ C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTique
 C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.xml
 C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.pdb
 C:\Users\neo\Documents\ImprimirTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.vbprojAssemblyReference.cache
+C:\Users\neo\Documents\GitHub\ImprimeTiquetes\ImprimirTiquetes\bin\Debug\ImprimirTiquetes.exe.config
+C:\Users\neo\Documents\GitHub\ImprimeTiquetes\ImprimirTiquetes\bin\Debug\ImprimirTiquetes.exe
+C:\Users\neo\Documents\GitHub\ImprimeTiquetes\ImprimirTiquetes\bin\Debug\ImprimirTiquetes.pdb
+C:\Users\neo\Documents\GitHub\ImprimeTiquetes\ImprimirTiquetes\bin\Debug\ImprimirTiquetes.xml
+C:\Users\neo\Documents\GitHub\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.vbprojAssemblyReference.cache
+C:\Users\neo\Documents\GitHub\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.Resources.resources
+C:\Users\neo\Documents\GitHub\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.vbproj.GenerateResource.cache
+C:\Users\neo\Documents\GitHub\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.vbproj.CoreCompileInputs.cache
+C:\Users\neo\Documents\GitHub\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.exe
+C:\Users\neo\Documents\GitHub\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.xml
+C:\Users\neo\Documents\GitHub\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.pdb
+C:\Users\neo\Documents\GitHub\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.Ayuda.resources
+C:\Users\neo\Documents\GitHub\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.Fr_Configuracion.resources
+C:\Users\neo\Documents\GitHub\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.Fr_Imprimir.resources

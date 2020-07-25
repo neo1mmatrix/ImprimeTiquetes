@@ -1,9 +1,17 @@
 ﻿Imports System.Text.RegularExpressions
-Public Class Form1
+Public Class Fr_Imprimir
 
     Dim _Segundos As Integer = 0
+    '1 = Impresora Tipo Matrix
+    '2 = Impresora Tipo Termica
+    Dim _TipoImpresora As Integer
+    Dim _ImpresoraTermica As String
+    Dim _ImpresoraMatrix As String
+
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        CargarConfiguracion()
         _Segundos = 0
         lbSegundos.Visible = False
         timerCuentaRegresiva.Start()
@@ -140,7 +148,6 @@ Public Class Form1
     Private Sub FormateoBn()
 
         Dim tempArray() As String = txtTiquete.Lines
-        Dim _Productos As Boolean = False
         Dim list As New List(Of String)
 
         For i = 0 To tempArray.Length - 2
@@ -163,5 +170,29 @@ Public Class Form1
         If _Segundos = 15 Then
             Me.Close()
         End If
+    End Sub
+
+    Private Sub Form1_DoubleClick(sender As Object, e As EventArgs) Handles MyBase.DoubleClick
+
+        timerCuentaRegresiva.Stop()
+        Fr_Configuracion.Show()
+
+    End Sub
+
+    Public Sub CargarConfiguracion()
+
+        _TipoImpresora = My.Settings.TipoImpresora
+        _ImpresoraMatrix = My.Settings.Matrix
+        _ImpresoraTermica = My.Settings.TipoImpresora
+        _LongitudImpresion = My.Settings.LongitudLinea
+        PrinterNameTermica = _ImpresoraTermica
+
+    End Sub
+
+    Private Sub btnAyuda_Click(sender As Object, e As EventArgs) Handles btnAyuda.Click
+
+        timerCuentaRegresiva.Stop()
+        Ayuda.Show()
+
     End Sub
 End Class

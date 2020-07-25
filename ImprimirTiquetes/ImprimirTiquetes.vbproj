@@ -93,11 +93,23 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.vb">
+    <Compile Include="Fr_Ayuda.Designer.vb">
+      <DependentUpon>Fr_Ayuda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Fr_Ayuda.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="Fr_Configuracion.Designer.vb">
+      <DependentUpon>Fr_Configuracion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Fr_Configuracion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fr_Imprimir.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fr_Imprimir.Designer.vb">
+      <DependentUpon>Fr_Imprimir.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Funciones.vb" />
@@ -107,6 +119,7 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -121,8 +134,14 @@
     <Compile Include="RawPrinterHelper.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="Fr_Ayuda.resx">
+      <DependentUpon>Fr_Ayuda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fr_Configuracion.resx">
+      <DependentUpon>Fr_Configuracion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fr_Imprimir.resx">
+      <DependentUpon>Fr_Imprimir.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

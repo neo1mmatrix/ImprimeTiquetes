@@ -23,9 +23,11 @@ Module ImprimeFactura
     Public Const eCol3 As String = Chr(27) + Chr(36) + "45L" + "0H"
     Public Const clear As String = Chr(27) + Chr(60)
     Public prn As New RawPrinterHelper
-    Dim _LongitudImpresion As Integer = 47
+    Public _LongitudImpresion As Integer = 0
     Public Const _Espacios As String = " "
-    Public PrinterNameTermica As String = "EPSON TERMICA"
+    'Para imprimir con conexion local se necesita colocar
+    '\\Desktop-feria\epson termica
+    Public PrinterNameTermica As String = ""
 
     Public Sub StartPrint()
         prn.OpenPrint(PrinterNameTermica)
@@ -39,14 +41,8 @@ Module ImprimeFactura
     Public Sub PrintTiqueteBn(ByVal linea1 As TextBox)
 
         Print(eDrawer)
-        Dim _LineaNumero As Integer = 0
-        Dim temp As String = ""
         Dim _ImprimirLinea As String = ""
         Dim _TamannoDescripcion As Integer = _LongitudImpresion - 23
-        Dim _LineaDetalles As Integer = 0
-        Dim _Cantidad As String = ""
-        Dim _Descripcion As String = ""
-        Dim _Subtotal As String = ""
 
         For i As Integer = 0 To linea1.Lines().Length - 2
             _ImprimirLinea = linea1.Lines(i).ToString
@@ -74,7 +70,6 @@ Module ImprimeFactura
         Dim _Productos As Boolean = False
         Dim _ImprimirLinea As String = ""
         Dim _TamannoDescripcion As Integer = _LongitudImpresion - 23
-        Dim _LineaDetalles As Integer = 0
         Dim _Cantidad As String = ""
         Dim _Descripcion As String = ""
         Dim _Subtotal As String = ""
@@ -98,8 +93,6 @@ Module ImprimeFactura
             End If
 
             If p_tiquete.Lines(i).Contains("/") And _Productos Then
-                'ProductoDetalles(p_tiquete.Lines(i).ToString, _Cantidad, _Descripcion, _Subtotal)
-                'PrintTiqueteDetalles(_Cantidad, _Descripcion, _Subtotal)
                 ProductoDetallesCod(p_tiquete.Lines(i).ToString, _Cantidad, _Descripcion, _Codigo, _Subtotal)
                 PrintTiqueteDetallesCod(_Cantidad, _Descripcion, _Subtotal, _Codigo)
             ElseIf p_tiquete.Lines(i).Contains("Desc: ") Then

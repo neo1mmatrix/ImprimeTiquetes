@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class Fr_Imprimir
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -23,11 +23,12 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Fr_Imprimir))
         Me.txtTiquete = New System.Windows.Forms.TextBox()
         Me.btnImprimir = New System.Windows.Forms.Button()
         Me.timerCuentaRegresiva = New System.Windows.Forms.Timer(Me.components)
         Me.lbSegundos = New System.Windows.Forms.Label()
+        Me.btnAyuda = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'txtTiquete
@@ -36,10 +37,10 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtTiquete.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTiquete.Location = New System.Drawing.Point(12, 12)
+        Me.txtTiquete.Location = New System.Drawing.Point(12, 22)
         Me.txtTiquete.Multiline = True
         Me.txtTiquete.Name = "txtTiquete"
-        Me.txtTiquete.Size = New System.Drawing.Size(336, 615)
+        Me.txtTiquete.Size = New System.Drawing.Size(370, 605)
         Me.txtTiquete.TabIndex = 0
         '
         'btnImprimir
@@ -49,7 +50,7 @@ Partial Class Form1
         Me.btnImprimir.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnImprimir.Location = New System.Drawing.Point(50, 643)
         Me.btnImprimir.Name = "btnImprimir"
-        Me.btnImprimir.Size = New System.Drawing.Size(257, 32)
+        Me.btnImprimir.Size = New System.Drawing.Size(215, 32)
         Me.btnImprimir.TabIndex = 1
         Me.btnImprimir.Text = "Imprimir"
         Me.btnImprimir.UseVisualStyleBackColor = True
@@ -69,18 +70,31 @@ Partial Class Form1
         Me.lbSegundos.TabIndex = 2
         Me.lbSegundos.Text = "0"
         '
+        'btnAyuda
+        '
+        Me.btnAyuda.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnAyuda.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAyuda.Location = New System.Drawing.Point(271, 643)
+        Me.btnAyuda.Name = "btnAyuda"
+        Me.btnAyuda.Size = New System.Drawing.Size(111, 32)
+        Me.btnAyuda.TabIndex = 3
+        Me.btnAyuda.Text = "Ayuda"
+        Me.btnAyuda.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(360, 687)
+        Me.ClientSize = New System.Drawing.Size(394, 687)
+        Me.Controls.Add(Me.btnAyuda)
         Me.Controls.Add(Me.lbSegundos)
         Me.Controls.Add(Me.btnImprimir)
         Me.Controls.Add(Me.txtTiquete)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Imprime Tiquetes Prueba"
+        Me.Text = "Imprime Tiquetes"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -90,4 +104,5 @@ Partial Class Form1
     Friend WithEvents btnImprimir As Button
     Friend WithEvents timerCuentaRegresiva As Timer
     Friend WithEvents lbSegundos As Label
+    Friend WithEvents btnAyuda As Button
 End Class
