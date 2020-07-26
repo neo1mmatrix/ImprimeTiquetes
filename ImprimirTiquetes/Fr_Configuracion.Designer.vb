@@ -23,7 +23,6 @@ Partial Class Fr_Configuracion
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Fr_Configuracion))
-        Me.txtPrinterName = New System.Windows.Forms.TextBox()
         Me.lbImpresoraMatrix = New System.Windows.Forms.Label()
         Me.nudLineas = New System.Windows.Forms.NumericUpDown()
         Me.lbNumeroLineas = New System.Windows.Forms.Label()
@@ -34,17 +33,10 @@ Partial Class Fr_Configuracion
         Me.lbFontSize = New System.Windows.Forms.Label()
         Me.lbTiempo = New System.Windows.Forms.Label()
         Me.nudTiempo = New System.Windows.Forms.NumericUpDown()
+        Me.cbPrinterList = New System.Windows.Forms.ComboBox()
         CType(Me.nudLineas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudTiempo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'txtPrinterName
-        '
-        Me.txtPrinterName.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrinterName.Location = New System.Drawing.Point(15, 45)
-        Me.txtPrinterName.Name = "txtPrinterName"
-        Me.txtPrinterName.Size = New System.Drawing.Size(748, 27)
-        Me.txtPrinterName.TabIndex = 0
         '
         'lbImpresoraMatrix
         '
@@ -52,9 +44,9 @@ Partial Class Fr_Configuracion
         Me.lbImpresoraMatrix.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbImpresoraMatrix.Location = New System.Drawing.Point(12, 24)
         Me.lbImpresoraMatrix.Name = "lbImpresoraMatrix"
-        Me.lbImpresoraMatrix.Size = New System.Drawing.Size(160, 18)
+        Me.lbImpresoraMatrix.Size = New System.Drawing.Size(91, 18)
         Me.lbImpresoraMatrix.TabIndex = 2
-        Me.lbImpresoraMatrix.Text = "Nombre Impresora"
+        Me.lbImpresoraMatrix.Text = "Impresora"
         '
         'nudLineas
         '
@@ -104,7 +96,7 @@ Partial Class Fr_Configuracion
         'btnSalir
         '
         Me.btnSalir.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSalir.Location = New System.Drawing.Point(417, 188)
+        Me.btnSalir.Location = New System.Drawing.Point(297, 184)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(106, 34)
         Me.btnSalir.TabIndex = 8
@@ -114,7 +106,7 @@ Partial Class Fr_Configuracion
         'btnGuardar
         '
         Me.btnGuardar.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGuardar.Location = New System.Drawing.Point(290, 188)
+        Me.btnGuardar.Location = New System.Drawing.Point(170, 184)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(106, 34)
         Me.btnGuardar.TabIndex = 9
@@ -135,7 +127,7 @@ Partial Class Fr_Configuracion
         '
         Me.lbTiempo.AutoSize = True
         Me.lbTiempo.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbTiempo.Location = New System.Drawing.Point(607, 91)
+        Me.lbTiempo.Location = New System.Drawing.Point(427, 91)
         Me.lbTiempo.Name = "lbTiempo"
         Me.lbTiempo.Size = New System.Drawing.Size(129, 18)
         Me.lbTiempo.TabIndex = 14
@@ -144,7 +136,7 @@ Partial Class Fr_Configuracion
         'nudTiempo
         '
         Me.nudTiempo.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.nudTiempo.Location = New System.Drawing.Point(610, 112)
+        Me.nudTiempo.Location = New System.Drawing.Point(430, 112)
         Me.nudTiempo.Minimum = New Decimal(New Integer() {40, 0, 0, 0})
         Me.nudTiempo.Name = "nudTiempo"
         Me.nudTiempo.Size = New System.Drawing.Size(78, 27)
@@ -152,11 +144,22 @@ Partial Class Fr_Configuracion
         Me.nudTiempo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.nudTiempo.Value = New Decimal(New Integer() {40, 0, 0, 0})
         '
+        'cbPrinterList
+        '
+        Me.cbPrinterList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbPrinterList.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbPrinterList.FormattingEnabled = True
+        Me.cbPrinterList.Location = New System.Drawing.Point(12, 45)
+        Me.cbPrinterList.Name = "cbPrinterList"
+        Me.cbPrinterList.Size = New System.Drawing.Size(559, 26)
+        Me.cbPrinterList.TabIndex = 15
+        '
         'Fr_Configuracion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 234)
+        Me.ClientSize = New System.Drawing.Size(583, 234)
+        Me.Controls.Add(Me.cbPrinterList)
         Me.Controls.Add(Me.lbTiempo)
         Me.Controls.Add(Me.nudTiempo)
         Me.Controls.Add(Me.lbFontSize)
@@ -167,8 +170,8 @@ Partial Class Fr_Configuracion
         Me.Controls.Add(Me.lbNumeroLineas)
         Me.Controls.Add(Me.nudLineas)
         Me.Controls.Add(Me.lbImpresoraMatrix)
-        Me.Controls.Add(Me.txtPrinterName)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximumSize = New System.Drawing.Size(599, 273)
         Me.Name = "Fr_Configuracion"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Configuración"
@@ -178,8 +181,6 @@ Partial Class Fr_Configuracion
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents txtPrinterName As TextBox
     Friend WithEvents lbImpresoraMatrix As Label
     Friend WithEvents nudLineas As NumericUpDown
     Friend WithEvents lbNumeroLineas As Label
@@ -190,4 +191,5 @@ Partial Class Fr_Configuracion
     Friend WithEvents lbFontSize As Label
     Friend WithEvents lbTiempo As Label
     Friend WithEvents nudTiempo As NumericUpDown
+    Friend WithEvents cbPrinterList As ComboBox
 End Class

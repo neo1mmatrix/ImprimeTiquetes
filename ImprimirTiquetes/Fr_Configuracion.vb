@@ -1,7 +1,17 @@
-﻿Public Class Fr_Configuracion
+﻿Imports System.Drawing.Printing
+
+Public Class Fr_Configuracion
     Private Sub Configuración_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        txtPrinterName.Text = My.Settings.PrinterName
+        Dim pkInstalledPrinters As String
+
+        ' Find all printers installed
+        For Each pkInstalledPrinters In
+            PrinterSettings.InstalledPrinters
+            cbPrinterList.Items.Add(pkInstalledPrinters)
+        Next pkInstalledPrinters
+
+        cbPrinterList.SelectedItem = My.Settings.PrinterName
         nudTiempo.Value = My.Settings.TiempoEspera
         If My.Settings.FontSize = 1 Then
             rbMedianaSize.Checked = True
@@ -19,7 +29,7 @@
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
-        My.Settings.PrinterName = txtPrinterName.Text
+        My.Settings.PrinterName = cbPrinterList.SelectedItem.ToString
         My.Settings.LongitudLinea = nudLineas.Value
         My.Settings.TiempoEspera = nudTiempo.Value
         If rbMedianaSize.Checked Then
