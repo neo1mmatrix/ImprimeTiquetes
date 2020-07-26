@@ -32,7 +32,10 @@ Partial Class Fr_Configuracion
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.lbFontSize = New System.Windows.Forms.Label()
+        Me.lbTiempo = New System.Windows.Forms.Label()
+        Me.nudTiempo = New System.Windows.Forms.NumericUpDown()
         CType(Me.nudLineas, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nudTiempo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtPrinterName
@@ -128,11 +131,34 @@ Partial Class Fr_Configuracion
         Me.lbFontSize.TabIndex = 12
         Me.lbFontSize.Text = "Tamaño Letra"
         '
+        'lbTiempo
+        '
+        Me.lbTiempo.AutoSize = True
+        Me.lbTiempo.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbTiempo.Location = New System.Drawing.Point(607, 91)
+        Me.lbTiempo.Name = "lbTiempo"
+        Me.lbTiempo.Size = New System.Drawing.Size(129, 18)
+        Me.lbTiempo.TabIndex = 14
+        Me.lbTiempo.Text = "Tiempo Espera"
+        '
+        'nudTiempo
+        '
+        Me.nudTiempo.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.nudTiempo.Location = New System.Drawing.Point(610, 112)
+        Me.nudTiempo.Minimum = New Decimal(New Integer() {40, 0, 0, 0})
+        Me.nudTiempo.Name = "nudTiempo"
+        Me.nudTiempo.Size = New System.Drawing.Size(78, 27)
+        Me.nudTiempo.TabIndex = 13
+        Me.nudTiempo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.nudTiempo.Value = New Decimal(New Integer() {40, 0, 0, 0})
+        '
         'Fr_Configuracion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 234)
+        Me.Controls.Add(Me.lbTiempo)
+        Me.Controls.Add(Me.nudTiempo)
         Me.Controls.Add(Me.lbFontSize)
         Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.btnSalir)
@@ -147,6 +173,7 @@ Partial Class Fr_Configuracion
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Configuración"
         CType(Me.nudLineas, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nudTiempo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -161,4 +188,6 @@ Partial Class Fr_Configuracion
     Friend WithEvents btnSalir As Button
     Friend WithEvents btnGuardar As Button
     Friend WithEvents lbFontSize As Label
+    Friend WithEvents lbTiempo As Label
+    Friend WithEvents nudTiempo As NumericUpDown
 End Class

@@ -162,10 +162,10 @@ Module ImprimeFactura
             End If
 
             If p_tiquete.Lines(i).ToString.Contains("Documento emitido conforme lo establecido") Or p_tiquete.Lines(i).ToString.Contains("Documento electronico emitido mediante") Then
-                _ImprimirLinea = p_tiquete.Lines(i).ToString
+                _ImprimirLinea = p_tiquete.Lines(i).ToString & " " & p_tiquete.Lines(i + 1).ToString
                 Print(eLeft + _ImprimirLinea)
-                _ImprimirLinea = p_tiquete.Lines(i + 1).ToString
-                Print(eLeft + _ImprimirLinea)
+                '_ImprimirLinea = p_tiquete.Lines(i + 1).ToString
+                'Print(eLeft + _ImprimirLinea)
                 _ImprimirLinea = p_tiquete.Lines(i + 2).ToString
                 Print(eLeft + _ImprimirLinea)
                 Print(" ")
@@ -217,7 +217,7 @@ Module ImprimeFactura
             End If
 
             Println("".PadRight(9, _Espacios))
-            Print(p_descripcion.Substring((_TamannoDescripcion - 1), p_descripcion.Length - (_TamannoDescripcion - 1)))
+            Print(p_descripcion.Substring((_TamannoDescripcion - 1), p_descripcion.Length - (_TamannoDescripcion)).TrimStart)
 
         Else
 
@@ -273,7 +273,7 @@ Module ImprimeFactura
             End If
 
             Println("".PadRight(9, _Espacios))
-            Print(p_descripcion.Substring((_TamannoDescripcion), p_descripcion.Length - (_TamannoDescripcion - 1)))
+            Print(p_descripcion.Substring((_TamannoDescripcion), p_descripcion.Length - (_TamannoDescripcion)).TrimStart)
             Println("".PadRight(9, _Espacios))
             Println("Cod: / ")
             Print(pCodigo)

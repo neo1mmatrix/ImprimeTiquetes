@@ -2,6 +2,7 @@
     Private Sub Configuración_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         txtPrinterName.Text = My.Settings.PrinterName
+        nudTiempo.Value = My.Settings.TiempoEspera
         If My.Settings.FontSize = 1 Then
             rbMedianaSize.Checked = True
         ElseIf My.Settings.FontSize = 2 Then
@@ -20,6 +21,7 @@
 
         My.Settings.PrinterName = txtPrinterName.Text
         My.Settings.LongitudLinea = nudLineas.Value
+        My.Settings.TiempoEspera = nudTiempo.Value
         If rbMedianaSize.Checked Then
             My.Settings.FontSize = 1
         ElseIf rbNormalSize.Checked Then

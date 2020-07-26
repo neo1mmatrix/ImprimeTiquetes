@@ -6,6 +6,7 @@ Public Class Fr_Imprimir
     '2 = Letra Mediana
     Dim _TipoImpresora As Integer
     Dim _PrinterName As String
+    Dim _Tiempo As Integer = 0
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -164,9 +165,9 @@ Public Class Fr_Imprimir
 
     Private Sub TimerCuentaRegresiva_Tick(sender As Object, e As EventArgs) Handles timerCuentaRegresiva.Tick
         _Segundos += 1
-        lbSegundos.Text = CStr(15 - _Segundos)
+        lbSegundos.Text = CStr(_Tiempo - _Segundos)
         lbSegundos.Visible = True
-        If _Segundos = 15 Then
+        If _Segundos = _Tiempo Then
             Me.Close()
         End If
     End Sub
@@ -184,6 +185,7 @@ Public Class Fr_Imprimir
         _PrinterName = My.Settings.PrinterName
         _LongitudImpresion = My.Settings.LongitudLinea
         PrinterNameTermica = _PrinterName
+        _Tiempo = My.Settings.TiempoEspera
 
     End Sub
 
