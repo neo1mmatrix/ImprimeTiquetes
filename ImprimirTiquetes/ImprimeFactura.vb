@@ -252,7 +252,7 @@ Module ImprimeFactura
         End If
 
         If p_descripcion.Length > _TamannoDescripcion Then
-            _DescripcionTemporal = p_descripcion.Substring(0, _TamannoDescripcion - 1) & "_"
+            _DescripcionTemporal = p_descripcion.Substring(0, _TamannoDescripcion) & "_"
         End If
 
         'IMPRIME LA DESCRIPCION
@@ -273,7 +273,7 @@ Module ImprimeFactura
             End If
 
             Println("".PadRight(9, _Espacios))
-            Print(p_descripcion.Substring((_TamannoDescripcion - 1), p_descripcion.Length - (_TamannoDescripcion - 1)))
+            Print(p_descripcion.Substring((_TamannoDescripcion), p_descripcion.Length - (_TamannoDescripcion - 1)))
             Println("".PadRight(9, _Espacios))
             Println("Cod: / ")
             Print(pCodigo)
