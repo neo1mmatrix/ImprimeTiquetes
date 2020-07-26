@@ -132,6 +132,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="RawPrinterHelper.vb" />
+    <Compile Include="TiquetesPrueba.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Fr_Ayuda.resx">

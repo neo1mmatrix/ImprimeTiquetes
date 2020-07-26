@@ -34,6 +34,7 @@ Partial Class Fr_Configuracion
         Me.lbTiempo = New System.Windows.Forms.Label()
         Me.nudTiempo = New System.Windows.Forms.NumericUpDown()
         Me.cbPrinterList = New System.Windows.Forms.ComboBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.nudLineas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudTiempo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -154,11 +155,22 @@ Partial Class Fr_Configuracion
         Me.cbPrinterList.Size = New System.Drawing.Size(559, 26)
         Me.cbPrinterList.TabIndex = 15
         '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(12, 184)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(106, 34)
+        Me.Button1.TabIndex = 16
+        Me.Button1.Text = "Imprimir Pueba"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Fr_Configuracion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(583, 234)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.cbPrinterList)
         Me.Controls.Add(Me.lbTiempo)
         Me.Controls.Add(Me.nudTiempo)
@@ -192,4 +204,5 @@ Partial Class Fr_Configuracion
     Friend WithEvents lbTiempo As Label
     Friend WithEvents nudTiempo As NumericUpDown
     Friend WithEvents cbPrinterList As ComboBox
+    Friend WithEvents Button1 As Button
 End Class

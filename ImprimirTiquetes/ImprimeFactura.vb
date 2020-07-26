@@ -164,8 +164,6 @@ Module ImprimeFactura
             If p_tiquete.Lines(i).ToString.Contains("Documento emitido conforme lo establecido") Or p_tiquete.Lines(i).ToString.Contains("Documento electronico emitido mediante") Then
                 _ImprimirLinea = p_tiquete.Lines(i).ToString & " " & p_tiquete.Lines(i + 1).ToString
                 Print(eLeft + _ImprimirLinea)
-                '_ImprimirLinea = p_tiquete.Lines(i + 1).ToString
-                'Print(eLeft + _ImprimirLinea)
                 _ImprimirLinea = p_tiquete.Lines(i + 2).ToString
                 Print(eLeft + _ImprimirLinea)
                 Print(" ")
@@ -317,7 +315,7 @@ Module ImprimeFactura
     'Imprime los datos de la venta, el cliente y otros datos
     Public Sub PrintDetalles(ByVal p_TipoDocumento As String, ByVal p_Cliente As String, ByVal p_Detalles As Array)
 
-        Print(eCentre + eNegritaOn + p_TipoDocumento + eCentre)
+        Print(eCentre + eNegritaOn + p_TipoDocumento)
         Print(eLeft + p_Cliente + eNegritaOff)
 
         For Each Value As String In p_Detalles
@@ -334,8 +332,11 @@ Module ImprimeFactura
 
     End Sub
 
-    Public Sub PrintFooterTiquete()
+    Public Sub PrintFooterTiquete(ByVal pTiquete As TextBox)
 
+        If pTiquete.Text.Contains("Proforma") Then
+            Print(eCentre + "*** LOS PRECIOS PUEDEN VARIAR SIN PREVIO AVISO ***")
+        End If
         Print(eCentre + "Gracias Por Su Compra!")
         Print(vbLf + vbLf + vbLf + vbLf + vbLf + eCut + eDrawer)
 

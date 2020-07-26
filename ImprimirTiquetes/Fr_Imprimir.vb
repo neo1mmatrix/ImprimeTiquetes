@@ -83,7 +83,7 @@ Public Class Fr_Imprimir
             PrintHeader(_Propietario, _DatosSucursal)
             PrintDetalles(_TipoDocumento, _ClienteNombre, _DatosCliente)
             PrintTiqueteElectonico(txtTiquete)
-            PrintFooterTiquete()
+            PrintFooterTiquete(txtTiquete)
             EndPrint()
         End If
 
@@ -125,7 +125,7 @@ Public Class Fr_Imprimir
     End Sub
 
     'Selecciona El tipo de Factura a Imprimir
-    Private Sub CompruebaTipoFactura()
+    Public Sub CompruebaTipoFactura()
 
         If Clipboard.GetText().Contains("www.FacturaProfesional.com") Then
             txtTiquete.Text = Clipboard.GetText()

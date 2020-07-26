@@ -58,4 +58,13 @@ Public Class Fr_Configuracion
     Private Sub Configuracion_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Fr_Imprimir.timerCuentaRegresiva.Start()
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Clipboard.SetText(TiquetePruebaImpresion)
+        Fr_Imprimir.CompruebaTipoFactura()
+        Threading.Thread.Sleep(500)
+        Clipboard.SetText(TiqueteProformaPuebaImpresion)
+        Fr_Imprimir.CompruebaTipoFactura()
+
+    End Sub
 End Class
