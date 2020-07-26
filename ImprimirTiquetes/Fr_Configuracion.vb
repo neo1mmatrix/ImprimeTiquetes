@@ -1,12 +1,11 @@
 ﻿Public Class Fr_Configuracion
     Private Sub Configuración_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        txtImpresoraMatrix.Text = My.Settings.Matrix
-        txtImpresoraTermica.Text = My.Settings.Termica
-        If My.Settings.TipoImpresora = 1 Then
-            rbImpresoraMatrix.Checked = True
-        ElseIf My.Settings.TipoImpresora = 2 Then
-            rbImpresoraTermica.Checked = True
+        txtPrinterName.Text = My.Settings.PrinterName
+        If My.Settings.FontSize = 1 Then
+            rbMedianaSize.Checked = True
+        ElseIf My.Settings.FontSize = 2 Then
+            rbNormalSize.Checked = True
         End If
         nudLineas.Value = My.Settings.LongitudLinea
     End Sub
@@ -19,13 +18,12 @@
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
-        My.Settings.Matrix = txtImpresoraMatrix.Text
-        My.Settings.Termica = txtImpresoraTermica.Text
+        My.Settings.PrinterName = txtPrinterName.Text
         My.Settings.LongitudLinea = nudLineas.Value
-        If rbImpresoraMatrix.Checked Then
-            My.Settings.TipoImpresora = 1
-        ElseIf rbImpresoraTermica.Checked Then
-            My.Settings.TipoImpresora = 2
+        If rbMedianaSize.Checked Then
+            My.Settings.FontSize = 1
+        ElseIf rbNormalSize.Checked Then
+            My.Settings.FontSize = 2
         End If
         My.Settings.Save()
         Fr_Imprimir.CargarConfiguracion()
@@ -33,15 +31,15 @@
 
     End Sub
 
-    Private Sub rbImpresoraTermica_CheckedChanged(sender As Object, e As EventArgs) Handles rbImpresoraTermica.CheckedChanged
-        If rbImpresoraTermica.Checked Then
-            nudLineas.Value = 48
+    Private Sub rbImpresoraTermica_CheckedChanged(sender As Object, e As EventArgs) Handles rbNormalSize.CheckedChanged
+        If rbNormalSize.Checked Then
+            nudLineas.Value = 40
         End If
     End Sub
 
-    Private Sub rbImpresoraMatrix_CheckedChanged(sender As Object, e As EventArgs) Handles rbImpresoraMatrix.CheckedChanged
-        If rbImpresoraMatrix.Checked Then
-            nudLineas.Value = 40
+    Private Sub rbImpresoraMatrix_CheckedChanged(sender As Object, e As EventArgs) Handles rbMedianaSize.CheckedChanged
+        If rbMedianaSize.Checked Then
+            nudLineas.Value = 48
         End If
     End Sub
 

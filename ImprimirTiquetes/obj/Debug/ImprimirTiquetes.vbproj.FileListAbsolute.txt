@@ -23,3 +23,17 @@ C:\Users\neo\Documents\GitHub\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\Imprimi
 C:\Users\neo\Documents\GitHub\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.Ayuda.resources
 C:\Users\neo\Documents\GitHub\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.Fr_Configuracion.resources
 C:\Users\neo\Documents\GitHub\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.Fr_Imprimir.resources
+C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\bin\Debug\ImprimirTiquetes.exe.config
+C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\bin\Debug\ImprimirTiquetes.exe
+C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\bin\Debug\ImprimirTiquetes.pdb
+C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\bin\Debug\ImprimirTiquetes.xml
+C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.vbprojAssemblyReference.cache
+C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.Ayuda.resources
+C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.Fr_Configuracion.resources
+C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.Fr_Imprimir.resources
+C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.Resources.resources
+C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.vbproj.GenerateResource.cache
+C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.vbproj.CoreCompileInputs.cache
+C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.exe
+C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.xml
+C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.pdb

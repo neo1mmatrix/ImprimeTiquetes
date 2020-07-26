@@ -57,36 +57,24 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property Matrix() As String
+        Public Property PrinterName() As String
             Get
-                Return CType(Me("Matrix"),String)
+                Return CType(Me("PrinterName"),String)
             End Get
             Set
-                Me("Matrix") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property Termica() As String
-            Get
-                Return CType(Me("Termica"),String)
-            End Get
-            Set
-                Me("Termica") = value
+                Me("PrinterName") = value
             End Set
         End Property
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property TipoImpresora() As Integer
+        Public Property FontSize() As Integer
             Get
-                Return CType(Me("TipoImpresora"),Integer)
+                Return CType(Me("FontSize"),Integer)
             End Get
             Set
-                Me("TipoImpresora") = value
+                Me("FontSize") = value
             End Set
         End Property
         

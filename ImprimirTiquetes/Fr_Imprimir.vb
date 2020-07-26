@@ -2,11 +2,10 @@
 Public Class Fr_Imprimir
 
     Dim _Segundos As Integer = 0
-    '1 = Impresora Tipo Matrix
-    '2 = Impresora Tipo Termica
+    '1 = Letra Normal
+    '2 = Letra Mediana
     Dim _TipoImpresora As Integer
-    Dim _ImpresoraTermica As String
-    Dim _ImpresoraMatrix As String
+    Dim _PrinterName As String
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -181,11 +180,10 @@ Public Class Fr_Imprimir
 
     Public Sub CargarConfiguracion()
 
-        _TipoImpresora = My.Settings.TipoImpresora
-        _ImpresoraMatrix = My.Settings.Matrix
-        _ImpresoraTermica = My.Settings.Termica
+        _TipoImpresora = My.Settings.FontSize
+        _PrinterName = My.Settings.PrinterName
         _LongitudImpresion = My.Settings.LongitudLinea
-        PrinterNameTermica = _ImpresoraTermica
+        PrinterNameTermica = _PrinterName
 
     End Sub
 

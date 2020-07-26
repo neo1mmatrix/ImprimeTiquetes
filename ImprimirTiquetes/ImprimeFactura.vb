@@ -12,7 +12,7 @@ Module ImprimeFactura
     Public Const eCut As String = Chr(27) + "i" + vbCrLf
     Public Const eSmlText As String = Chr(27) + "!" + Chr(2)
     Public Const eBigText As String = Chr(27) + "!" + Chr(16)
-    Public Const eNmlText As String = Chr(27) + "!" + Chr(0)
+    Public Const eNmlText As String = Chr(27) + "!" + Chr(1)
     Public Const eInit As String = eNmlText + Chr(13) + Chr(27) +
     "c6" + Chr(1) + Chr(27) + "R3" + vbCrLf
     Public Const eBigCharOn As String = Chr(27) + "!" + Chr(56)
@@ -49,9 +49,16 @@ Module ImprimeFactura
 
             If i = 0 Then
                 'Imprime Nombre de la empresa
-                Print(eSmlText + eNegritaOn + eCentre + _ImprimirLinea + eNegritaOff)
-                Print(eSmlText + eCentre + linea1.Lines(1).ToString + eNegritaOff)
-                Print(" ")
+                If My.Settings.FontSize = 1 Then
+                    Print(eSmlText + eNegritaOn + eCentre + _ImprimirLinea + eNegritaOff)
+                    Print(eSmlText + eCentre + linea1.Lines(1).ToString + eNegritaOff)
+                    Print(" ")
+                Else
+                    Print(eNmlText + eNegritaOn + eCentre + _ImprimirLinea + eNegritaOff)
+                    Print(eNmlText + eCentre + linea1.Lines(1).ToString + eNegritaOff)
+                    Print(" ")
+                End If
+
             End If
             If i > 1 Then
                 Print(eLeft + linea1.Lines(i).ToString)
@@ -76,14 +83,25 @@ Module ImprimeFactura
         Dim _Codigo As String = ""
 
         'IMPRIME LOS ENCABEZADOS DE LA CANTIDAD DESCRIPCION Y PRECIOS
-        Println(eSmlText + "  CANT.  ") '9
-        Println("COD/ DESCRIPCION") '16
-        Println("".PadLeft((_LongitudImpresion - 37), _Espacios))
-        Print("SUBTOTAL C/.") '12
+        If My.Settings.FontSize = 1 Then
+            Println(eSmlText + "  CANT.  ") '9
+            Println("COD/ DESCRIPCION") '16
+            Println("".PadLeft((_LongitudImpresion - 37), _Espacios))
+            Print("SUBTOTAL C/.") '12
 
-        Println(eSmlText + "  -----  ")
-        Println("".PadLeft((_TamannoDescripcion - 1), "-"))
-        Print(" -------------")
+            Println(eSmlText + "  -----  ")
+            Println("".PadLeft((_TamannoDescripcion - 1), "-"))
+            Print(" -------------")
+        Else
+            Println(eNmlText + "  CANT.  ") '9
+            Println("COD/ DESCRIPCION") '16
+            Println("".PadLeft((_LongitudImpresion - 37), _Espacios))
+            Print("SUBTOTAL C/.") '12
+
+            Println(eNmlText + "  -----  ")
+            Println("".PadLeft((_TamannoDescripcion - 1), "-"))
+            Print(" -------------")
+        End If
 
         Dim _UltimaLinea As Boolean = False
         For i As Integer = 15 To p_tiquete.Lines().Length - 1
@@ -127,7 +145,13 @@ Module ImprimeFactura
             ElseIf p_tiquete.Lines(i).Contains("Total:" & vbTab) Then
                 PrintDashes()
                 _ImprimirLinea = p_tiquete.Lines(i).ToString
-                Print(eCentre + eBigText + eNegritaOn + _ImprimirLinea + eNegritaOff + eSmlText)
+
+                If My.Settings.FontSize = 1 Then
+                    Print(eCentre + eBigText + eNegritaOn + _ImprimirLinea + eNegritaOff + eSmlText)
+                Else
+                    Print(eCentre + eBigText + eNegritaOn + _ImprimirLinea + eNegritaOff + eNmlText)
+                End If
+
                 PrintDashes()
             End If
 
@@ -274,9 +298,16 @@ Module ImprimeFactura
 
     'Imprime la cabecera de la empresa, contiene los datos de la misma
     Public Sub PrintHeader(ByVal p_Empresa As String, ByVal p_Datos As Array)
-        Print(eInit + eSmlText + eCentre + "==============================================")
-        Print(eBigText + eNegritaOn + eCentre + p_Empresa + eNegritaOff)
-        Print(eSmlText + "========================================")
+        If My.Settings.FontSize = 1 Then
+            Print(eInit + eSmlText + eCentre + "".PadLeft((_LongitudImpresion - 2), "="))
+            Print(eBigText + eNegritaOn + eCentre + p_Empresa + eNegritaOff)
+            Print(eSmlText + "".PadLeft((_LongitudImpresion - 6), "="))
+        Else
+            Print(eInit + eNmlText + eCentre + "".PadLeft((_LongitudImpresion - 2), "="))
+            Print(eBigText + eNegritaOn + eCentre + p_Empresa + eNegritaOff)
+            Print(eNmlText + "".PadLeft((_LongitudImpresion - 6), "="))
+        End If
+
         For i = 0 To p_Datos.Length - 1
             Print(p_Datos(i))
         Next
@@ -291,7 +322,12 @@ Module ImprimeFactura
 
         For Each Value As String In p_Detalles
             If Value <> "" Then
-                Print(Value)
+                If My.Settings.FontSize = 1 Then
+                    Print(eSmlText + Value)
+                Else
+                    Print(eNmlText + Value)
+                End If
+
             End If
         Next
         Print(" ")
@@ -313,7 +349,11 @@ Module ImprimeFactura
         prn.SendStringToPrinter(PrinterNameTermica, Line)
     End Sub
     Public Sub PrintDashes()
-        Print(eLeft + eSmlText + "-".PadRight(48, "-"))
+        If My.Settings.FontSize = 1 Then
+            Print(eLeft + eSmlText + "-".PadRight(_LongitudImpresion, "-"))
+        Else
+            Print(eLeft + eNmlText + "-".PadRight(_LongitudImpresion, "-"))
+        End If
     End Sub
 
     Public Sub EndPrint()
