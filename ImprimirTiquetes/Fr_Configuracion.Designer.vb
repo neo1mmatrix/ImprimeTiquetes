@@ -138,7 +138,7 @@ Partial Class Fr_Configuracion
         '
         Me.nudTiempo.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.nudTiempo.Location = New System.Drawing.Point(430, 112)
-        Me.nudTiempo.Minimum = New Decimal(New Integer() {40, 0, 0, 0})
+        Me.nudTiempo.Minimum = New Decimal(New Integer() {20, 0, 0, 0})
         Me.nudTiempo.Name = "nudTiempo"
         Me.nudTiempo.Size = New System.Drawing.Size(78, 27)
         Me.nudTiempo.TabIndex = 13

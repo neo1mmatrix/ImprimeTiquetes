@@ -9,7 +9,7 @@ Dirección: MERCADO MUNICIPAL. TRAMO NO. 74. FRENTE AL ABASTECEDOR ARIEL., I Gri
 Teléfono: (506)27717201
 E-mail: dist.mercadito@gmail.com
 Tiquete Electrónico
-Cliente:	Cliente de contado
+Cliente:	SOLO PRUEBA NO TIENE VALOR
 Documento:	00100001040000004569
 Fecha:	25/07/2020 14:19:31
 Act. económica:	519006
@@ -96,7 +96,7 @@ Dirección: PALMARES, 180 MTRS SURESTE DEL SUPERMERCADO BM, Daniel Flores, Danie
 Teléfono: (506)27714686
 E-mail: dist.mercadito@gmail.com
 Proforma
-Cliente:	Micsa
+Cliente:	SOLO PUEBA NO TIENE VALOR
 Identificación:	3101175844
 Teléfono:	00000000
 E-mail:	micsa.facturacion2018@gmail.com

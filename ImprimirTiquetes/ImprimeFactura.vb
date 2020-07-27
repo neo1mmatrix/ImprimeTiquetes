@@ -180,12 +180,24 @@ Module ImprimeFactura
 
     Public Sub PrintTiqueteDetalles(ByVal p_cantidad As String, ByVal p_descripcion As String, ByVal p_subtotal As String)
 
-        Dim _TamannoDescripcion As Integer = _LongitudImpresion - 23
+        'EL NUMERO 23 CORRESPONDEN A 
+        '    7 ESPACIOS RESERVADOS PARA LA CANTIDAD DE PRODUCTO
+        '    1 ESPACIO ENTRE CANTIDAD Y PRODUCTO
+        '    1 ESPACIO ENTRE PRODUCTO Y SUBTOTAL
+        '    14 ESPACIOS ENTRE PRODUCTO Y SUBTOTAL
+        'SUMADOS TODOS LOS ANTERIORES DAN 23, LO QUE SOBRE DE LA LONGITUD MAXIMA DE LETRAS SE UTILIZA PARA EL PRODUCTO
+
+        Dim _EspaciosReservados As Integer = 23
+        Dim _EspaciosCantidad As Integer = 7
+        Dim _EspaciosSubtotal As Integer = 13
+
+        Dim _TamannoDescripcion As Integer = _LongitudImpresion - _EspaciosReservados
         Dim _DescripcionTemporal As String = p_descripcion
         Dim _Cantidad As String = p_cantidad
+
         'IMPRIME LA CANTIDAD DEL ARTICULO
-        If _Cantidad.Length <= 7 Then
-            Println("".PadRight(7 - _Cantidad.Length, _Espacios))
+        If _Cantidad.Length <= _EspaciosCantidad Then
+            Println("".PadRight(_EspaciosCantidad - _Cantidad.Length, _Espacios))
             Println(_Cantidad)
             Println("  ")
         Else
@@ -207,8 +219,8 @@ Module ImprimeFactura
             Println("".PadRight((_TamannoDescripcion + 1) - _DescripcionTemporal.Length, _Espacios))
 
             'IMPRIME EL TOTAL POR ARTICULO
-            If p_subtotal.Length <= 13 Then
-                Println("".PadRight(13 - p_subtotal.Length, _Espacios))
+            If p_subtotal.Length <= _EspaciosSubtotal Then
+                Println("".PadRight(_EspaciosSubtotal - p_subtotal.Length, _Espacios))
                 Print(p_subtotal)
             Else
                 Print("##.###.###.##")
@@ -223,8 +235,8 @@ Module ImprimeFactura
             Println("".PadRight((_TamannoDescripcion + 1) - p_descripcion.Length, _Espacios))
 
             'IMPRIME EL TOTAL POR ARTICULO
-            If p_subtotal.Length <= 13 Then
-                Println("".PadRight(13 - p_subtotal.Length, _Espacios))
+            If p_subtotal.Length <= _EspaciosSubtotal Then
+                Println("".PadRight(_EspaciosSubtotal - p_subtotal.Length, _Espacios))
                 Print(p_subtotal)
             Else
                 Print("##.###.###.##")
@@ -235,13 +247,25 @@ Module ImprimeFactura
 
     Public Sub PrintTiqueteDetallesCod(ByVal p_cantidad As String, ByVal p_descripcion As String, ByVal p_subtotal As String, ByVal pCodigo As String)
 
-        Dim _TamannoDescripcion As Integer = _LongitudImpresion - 23
+        'EL NUMERO 23 CORRESPONDEN A 
+        '    7 ESPACIOS RESERVADOS PARA LA CANTIDAD DE PRODUCTO
+        '    1 ESPACIO ENTRE CANTIDAD Y PRODUCTO
+        '    1 ESPACIO ENTRE PRODUCTO Y SUBTOTAL
+        '    14 ESPACIOS ENTRE PRODUCTO Y SUBTOTAL
+        'SUMADOS TODOS LOS ANTERIORES DAN 23, LO QUE SOBRE DE LA LONGITUD MAXIMA DE LETRAS SE UTILIZA PARA EL PRODUCTO
+
+        Dim _EspaciosReservados As Integer = 23
+        Dim _EspaciosCantidad As Integer = 7
+        Dim _EspaciosSubtotal As Integer = 13
+
+        Dim _TamannoDescripcion As Integer = _LongitudImpresion - _EspaciosReservados
         Dim _DescripcionTemporal As String = p_descripcion
         Dim _Cantidad As String = p_cantidad
         pCodigo = pCodigo & " /"
+
         'IMPRIME LA CANTIDAD DEL ARTICULO
-        If _Cantidad.Length <= 7 Then
-            Println("".PadRight(7 - _Cantidad.Length, _Espacios))
+        If _Cantidad.Length <= _EspaciosCantidad Then
+            Println("".PadRight(_EspaciosCantidad - _Cantidad.Length, _Espacios))
             Println(_Cantidad)
             Println("  ")
         Else
@@ -263,8 +287,8 @@ Module ImprimeFactura
             Println("".PadRight((_TamannoDescripcion + 1) - _DescripcionTemporal.Length, _Espacios))
 
             'IMPRIME EL TOTAL POR ARTICULO
-            If p_subtotal.Length <= 13 Then
-                Println("".PadRight(13 - p_subtotal.Length, _Espacios))
+            If p_subtotal.Length <= _EspaciosSubtotal Then
+                Println("".PadRight(_EspaciosSubtotal - p_subtotal.Length, _Espacios))
                 Print(p_subtotal)
             Else
                 Print("##.###.###.##")
@@ -281,8 +305,8 @@ Module ImprimeFactura
             Println("".PadRight((_TamannoDescripcion + 1) - p_descripcion.Length, _Espacios))
 
             'IMPRIME EL TOTAL POR ARTICULO
-            If p_subtotal.Length <= 13 Then
-                Println("".PadRight(13 - p_subtotal.Length, _Espacios))
+            If p_subtotal.Length <= _EspaciosSubtotal Then
+                Println("".PadRight(_EspaciosSubtotal - p_subtotal.Length, _Espacios))
                 Print(p_subtotal)
             Else
                 Print("##.###.###.##")
