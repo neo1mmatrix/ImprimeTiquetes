@@ -97,7 +97,7 @@ Partial Class Fr_Configuracion
         'btnSalir
         '
         Me.btnSalir.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSalir.Location = New System.Drawing.Point(297, 184)
+        Me.btnSalir.Location = New System.Drawing.Point(331, 184)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(106, 34)
         Me.btnSalir.TabIndex = 8
@@ -107,7 +107,7 @@ Partial Class Fr_Configuracion
         'btnGuardar
         '
         Me.btnGuardar.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGuardar.Location = New System.Drawing.Point(170, 184)
+        Me.btnGuardar.Location = New System.Drawing.Point(219, 184)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(106, 34)
         Me.btnGuardar.TabIndex = 9
@@ -160,7 +160,7 @@ Partial Class Fr_Configuracion
         Me.Button1.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Location = New System.Drawing.Point(12, 184)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(106, 34)
+        Me.Button1.Size = New System.Drawing.Size(159, 34)
         Me.Button1.TabIndex = 16
         Me.Button1.Text = "Imprimir Pueba"
         Me.Button1.UseVisualStyleBackColor = True
