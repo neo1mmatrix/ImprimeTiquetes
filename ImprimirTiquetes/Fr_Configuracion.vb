@@ -29,29 +29,37 @@ Public Class Fr_Configuracion
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
-        My.Settings.PrinterName = cbPrinterList.SelectedItem.ToString
-        My.Settings.LongitudLinea = nudLineas.Value
-        My.Settings.TiempoEspera = nudTiempo.Value
-        If rbMedianaSize.Checked Then
-            My.Settings.FontSize = 1
-        ElseIf rbNormalSize.Checked Then
-            My.Settings.FontSize = 2
+        If cbPrinterList.SelectedIndex = -1 Then
+            MsgBox("Seleccione la Impresora")
+        ElseIf My.Settings.FontSize = 0 Then
+            MsgBox("Seleccione el tamaño de la letra")
+        Else
+            My.Settings.PrinterName = cbPrinterList.SelectedItem.ToString
+            My.Settings.LongitudLinea = nudLineas.Value
+            My.Settings.TiempoEspera = nudTiempo.Value
+            If rbMedianaSize.Checked Then
+                My.Settings.FontSize = 1
+            ElseIf rbNormalSize.Checked Then
+                My.Settings.FontSize = 2
+            End If
+            My.Settings.Save()
+            Fr_Imprimir.CargarConfiguracion()
+            MsgBox("Configuración Guardada")
         End If
-        My.Settings.Save()
-        Fr_Imprimir.CargarConfiguracion()
-        MsgBox("Configuración Guardada")
 
     End Sub
 
     Private Sub rbImpresoraTermica_CheckedChanged(sender As Object, e As EventArgs) Handles rbNormalSize.CheckedChanged
         If rbNormalSize.Checked Then
             nudLineas.Value = 40
+            My.Settings.FontSize = 40
         End If
     End Sub
 
     Private Sub rbImpresoraMatrix_CheckedChanged(sender As Object, e As EventArgs) Handles rbMedianaSize.CheckedChanged
         If rbMedianaSize.Checked Then
             nudLineas.Value = 48
+            My.Settings.FontSize = 48
         End If
     End Sub
 
@@ -59,12 +67,19 @@ Public Class Fr_Configuracion
         Fr_Imprimir.timerCuentaRegresiva.Start()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Clipboard.SetText(TiquetePruebaImpresion)
-        Fr_Imprimir.CompruebaTipoFactura()
-        Threading.Thread.Sleep(500)
-        Clipboard.SetText(TiqueteProformaPuebaImpresion)
-        Fr_Imprimir.CompruebaTipoFactura()
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnImprimirPrueba.Click
+
+        If My.Settings.PrinterName = "" Then
+            MsgBox("Guarde los cambios primero")
+        ElseIf my.Settings.FontSize = 0 Then
+            MsgBox("Seleccione el tamaño de la letra")
+        Else
+            Clipboard.SetText(TiquetePruebaImpresion)
+            Fr_Imprimir.CompruebaTipoFactura()
+            Threading.Thread.Sleep(500)
+            Clipboard.SetText(TiqueteProformaPuebaImpresion)
+            Fr_Imprimir.CompruebaTipoFactura()
+        End If
 
     End Sub
 End Class

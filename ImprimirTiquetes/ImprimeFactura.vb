@@ -29,15 +29,9 @@ Module ImprimeFactura
     '\\Desktop-feria\epson termica
     Public PrinterNameTermica As String
 
-    Public Sub StartPrint()
-        prn.OpenPrint(PrinterNameTermica)
-    End Sub
 
-    Public Sub StartPrintTiquete(ByVal p_longitudImpresion As Integer)
-        prn.OpenPrint(PrinterNameTermica)
-        _LongitudImpresion = p_longitudImpresion
-    End Sub
 
+    'Imprime los tiquetes del Banco Nacional
     Public Sub PrintTiqueteBn(ByVal linea1 As TextBox)
 
         Print(eDrawer)
@@ -67,9 +61,7 @@ Module ImprimeFactura
 
     End Sub
 
-    Public Sub PrintFooterBn()
-        Print(vbLf + vbLf + vbLf + vbLf + vbLf + vbLf + eCut)
-    End Sub
+
 
     Public Sub PrintTiqueteElectonico(ByVal p_tiquete As TextBox)
 
@@ -83,6 +75,7 @@ Module ImprimeFactura
         Dim _Codigo As String = ""
 
         'IMPRIME LOS ENCABEZADOS DE LA CANTIDAD DESCRIPCION Y PRECIOS
+        '   " CANT. COD/ DESCRIPCION    SUBTOTAL C/. " 
         If My.Settings.FontSize = 1 Then
             Println(eSmlText + "  CANT.  ") '9
             Println("COD/ DESCRIPCION") '16
@@ -103,16 +96,23 @@ Module ImprimeFactura
             Print(" -------------")
         End If
 
+        'A partir de la linea 15 casi siempre enpiezan los productos,
+        '_UltimaLinea verifica si la linea corresponde a un producto
         Dim _UltimaLinea As Boolean = False
         For i As Integer = 15 To p_tiquete.Lines().Length - 1
-
+            'Al llegar al Subtotal se da por hecho que no hay mas articulos que imprimir
             If p_tiquete.Lines(i).ToString = "SubTotal" Then
                 _UltimaLinea = True
             End If
 
+            'Envia la linea del producto para dividirlos en _Cantidad, _Descripcion, _Codigo, _Subtotal
+            'Verifico por medio de _Productos, si aparece empieza a enviar los productos a imprimir
             If p_tiquete.Lines(i).Contains("/") And _Productos Then
+                'Envia la linea del producto para dividirlos en _Cantidad, _Descripcion, _Codigo, _Subtotal
                 ProductoDetallesCod(p_tiquete.Lines(i).ToString, _Cantidad, _Descripcion, _Codigo, _Subtotal)
+                'Imprime los detalles
                 PrintTiqueteDetallesCod(_Cantidad, _Descripcion, _Subtotal, _Codigo)
+                'Imprimir descuentos si existen
             ElseIf p_tiquete.Lines(i).Contains("Desc: ") Then
                 Println("".PadRight(9, _Espacios))
                 Print(p_tiquete.Lines(i).ToString)
@@ -178,73 +178,6 @@ Module ImprimeFactura
 
     End Sub
 
-    Public Sub PrintTiqueteDetalles(ByVal p_cantidad As String, ByVal p_descripcion As String, ByVal p_subtotal As String)
-
-        'EL NUMERO 23 CORRESPONDEN A 
-        '    7 ESPACIOS RESERVADOS PARA LA CANTIDAD DE PRODUCTO
-        '    1 ESPACIO ENTRE CANTIDAD Y PRODUCTO
-        '    1 ESPACIO ENTRE PRODUCTO Y SUBTOTAL
-        '    14 ESPACIOS ENTRE PRODUCTO Y SUBTOTAL
-        'SUMADOS TODOS LOS ANTERIORES DAN 23, LO QUE SOBRE DE LA LONGITUD MAXIMA DE LETRAS SE UTILIZA PARA EL PRODUCTO
-
-        Dim _EspaciosReservados As Integer = 23
-        Dim _EspaciosCantidad As Integer = 7
-        Dim _EspaciosSubtotal As Integer = 13
-
-        Dim _TamannoDescripcion As Integer = _LongitudImpresion - _EspaciosReservados
-        Dim _DescripcionTemporal As String = p_descripcion
-        Dim _Cantidad As String = p_cantidad
-
-        'IMPRIME LA CANTIDAD DEL ARTICULO
-        If _Cantidad.Length <= _EspaciosCantidad Then
-            Println("".PadRight(_EspaciosCantidad - _Cantidad.Length, _Espacios))
-            Println(_Cantidad)
-            Println("  ")
-        Else
-            Println("####.##")
-            Println("  ")
-        End If
-
-        If p_descripcion.Length > _TamannoDescripcion Then
-            _DescripcionTemporal = p_descripcion.Substring(0, _TamannoDescripcion - 1) & "_"
-        End If
-
-        'IMPRIME LA DESCRIPCION
-        If p_descripcion.Length > _TamannoDescripcion Then
-
-            'SI LA DESCRIPCION SOBREPASA LOS 18 CARACTERES IMPRIME UNA PRIMERA PARTE
-            'CON EL TOTAL DEL ARTICULO Y PASA A ESCRIBIR LA CONTINUACION EN LA SIGUIENTE LINEA
-
-            Println(_DescripcionTemporal)
-            Println("".PadRight((_TamannoDescripcion + 1) - _DescripcionTemporal.Length, _Espacios))
-
-            'IMPRIME EL TOTAL POR ARTICULO
-            If p_subtotal.Length <= _EspaciosSubtotal Then
-                Println("".PadRight(_EspaciosSubtotal - p_subtotal.Length, _Espacios))
-                Print(p_subtotal)
-            Else
-                Print("##.###.###.##")
-            End If
-
-            Println("".PadRight(9, _Espacios))
-            Print(p_descripcion.Substring((_TamannoDescripcion - 1), p_descripcion.Length - (_TamannoDescripcion)).TrimStart)
-
-        Else
-
-            Println(p_descripcion)
-            Println("".PadRight((_TamannoDescripcion + 1) - p_descripcion.Length, _Espacios))
-
-            'IMPRIME EL TOTAL POR ARTICULO
-            If p_subtotal.Length <= _EspaciosSubtotal Then
-                Println("".PadRight(_EspaciosSubtotal - p_subtotal.Length, _Espacios))
-                Print(p_subtotal)
-            Else
-                Print("##.###.###.##")
-            End If
-        End If
-
-    End Sub
-
     Public Sub PrintTiqueteDetallesCod(ByVal p_cantidad As String, ByVal p_descripcion As String, ByVal p_subtotal As String, ByVal pCodigo As String)
 
         'EL NUMERO 23 CORRESPONDEN A 
@@ -252,7 +185,9 @@ Module ImprimeFactura
         '    1 ESPACIO ENTRE CANTIDAD Y PRODUCTO
         '    1 ESPACIO ENTRE PRODUCTO Y SUBTOTAL
         '    14 ESPACIOS ENTRE PRODUCTO Y SUBTOTAL
-        'SUMADOS TODOS LOS ANTERIORES DAN 23, LO QUE SOBRE DE LA LONGITUD MAXIMA DE LETRAS SE UTILIZA PARA EL PRODUCTO
+        'SUMADOS TODOS LOS ANTERIORES DAN 23, 
+        'LO QUE SOBRA DE LA LONGITUD MAXIMA DE LETRAS QUE SE PUEDE IMPRIMIR EN EL TIQUETE
+        'SE UTILIZA PARA EL PRODUCTO
 
         Dim _EspaciosReservados As Integer = 23
         Dim _EspaciosCantidad As Integer = 7
@@ -319,15 +254,21 @@ Module ImprimeFactura
     End Sub
 
     'Imprime la cabecera de la empresa, contiene los datos de la misma
+    '   1) Nombre de la empresa
+    '   2) Cedula
+    '   3) Sucursal
+    '   4) Direccion
+    '   5) Telefono
+    '   6) Email
     Public Sub PrintHeader(ByVal p_Empresa As String, ByVal p_Datos As Array)
         If My.Settings.FontSize = 1 Then
             Print(eInit + eSmlText + eCentre + "".PadLeft((_LongitudImpresion - 2), "="))
             Print(eBigText + eNegritaOn + eCentre + p_Empresa + eNegritaOff)
-            Print(eSmlText + "".PadLeft((_LongitudImpresion - 6), "="))
+            Print(eSmlText + "".PadLeft((_LongitudImpresion - 8), "="))
         Else
             Print(eInit + eNmlText + eCentre + "".PadLeft((_LongitudImpresion - 2), "="))
             Print(eBigText + eNegritaOn + eCentre + p_Empresa + eNegritaOff)
-            Print(eNmlText + "".PadLeft((_LongitudImpresion - 6), "="))
+            Print(eNmlText + "".PadLeft((_LongitudImpresion - 8), "="))
         End If
 
         For i = 0 To p_Datos.Length - 1
@@ -337,6 +278,11 @@ Module ImprimeFactura
     End Sub
 
     'Imprime los datos de la venta, el cliente y otros datos
+    ' 1) Tipo Documento (Tiquete - Factura - Proforma)
+    ' 2) Nombre del Cliente
+    ' 3) Numero de Documento
+    ' 4) Fecha
+    ' 5) Clave Factura Electronica
     Public Sub PrintDetalles(ByVal p_TipoDocumento As String, ByVal p_Cliente As String, ByVal p_Detalles As Array)
 
         Print(eCentre + eNegritaOn + p_TipoDocumento)
@@ -356,6 +302,8 @@ Module ImprimeFactura
 
     End Sub
 
+    'Imprime el Pie de Pagina del Documento
+    ' 1) Varios Avisos que se quieran imprimir al final del documento
     Public Sub PrintFooterTiquete(ByVal pTiquete As TextBox)
 
         If pTiquete.Text.Contains("Proforma") Then
@@ -366,13 +314,11 @@ Module ImprimeFactura
 
     End Sub
 
-    Public Sub Print(Line As String)
-        prn.SendStringToPrinter(PrinterNameTermica, Line + vbLf)
-    End Sub
-
-    Public Sub Println(Line As String)
-        prn.SendStringToPrinter(PrinterNameTermica, Line)
-    End Sub
+    'Imprime una serie de lineas esteticas en el documento
+    'Para dar enfasis a elementos
+    ' "------------------------------------------"
+    ' "            TOTAL: CRC 123.000.45         "
+    ' "------------------------------------------"
     Public Sub PrintDashes()
         If My.Settings.FontSize = 1 Then
             Print(eLeft + eSmlText + "-".PadRight(_LongitudImpresion, "-"))
@@ -381,47 +327,11 @@ Module ImprimeFactura
         End If
     End Sub
 
-    Public Sub EndPrint()
-        prn.ClosePrint()
-    End Sub
-
-    'Divide los datos de los productos en Cantidad, Precio, Descripcion Y Subtotal
-    Private Sub ProductoDetalles(ByVal pLinea As String, ByRef pCantidad As String, ByRef pDescripcion As String, ByRef pSubtotal As String)
-
-        Dim _Distancia As Integer = 0
-        Dim _Slash As Integer = 0
-
-        Dim str As [String] = pLinea
-        Dim _PrimerTab As Integer = 0
-        Dim _SegundoTab As Integer = 0
-
-        For i As Integer = 0 To str.Length - 1
-
-            If str(i) = vbTab And _PrimerTab = 0 Then
-                'Guarda la primera tabulacion, para poder seleccionar la cantidad
-                _PrimerTab = i
-            ElseIf str(i) = vbTab And _PrimerTab > 0 Then
-                'Guarda la segunda tabulacion, entre la primera y la segunda se encuentra la descripcion
-                _SegundoTab = i
-            ElseIf str(i) = "/" And _Slash = 0 Then
-                'El slash fija el punto de Inicio en el codigo, para seleccionar codigo y descripcion
-                _Slash = i + 2
-            End If
-
-        Next
-
-        pCantidad = pLinea.Substring(0, _PrimerTab)
-        _Distancia = _SegundoTab - (_Slash)
-        pDescripcion = pLinea.Substring(_Slash, _Distancia).ToUpper
-        _Distancia = pLinea.Length - (_SegundoTab + 1)
-        pSubtotal = pLinea.Substring(_SegundoTab + 1, _Distancia)
-
-    End Sub
-
-
     'Divide los datos de los productos en Cantidad, Precio, Descripcion, Subtotal y Codigo
+    '20	kg / N3755 / BOLSA NEGRA 37X55	26,000.00
     Private Sub ProductoDetallesCod(ByVal pLinea As String, ByRef pCantidad As String, ByRef pDescripcion As String, ByRef pCodigo As String, ByRef pSubtotal As String)
 
+        '_Distancia es la cantidad de letras que imprime en el Substring
         Dim _Distancia As Integer = 0
         Dim _Slash As Integer = 0
         Dim _Slash2 As Integer = 0
@@ -447,16 +357,46 @@ Module ImprimeFactura
 
         Next
 
+        '20	kg 
         pCantidad = pLinea.Substring(0, _PrimerTab)
 
         _Distancia = _SegundoTab - (_Slash)
+        '/ N3755 / 
         pCodigo = pLinea.Substring(_Slash, (_Slash2 - _Slash)).ToUpper
 
         _Distancia = _SegundoTab - (_Slash2 + 2)
+        'BOLSA NEGRA 37X55
         pDescripcion = pLinea.Substring(_Slash2 + 2, _Distancia).ToUpper
 
         _Distancia = pLinea.Length - (_SegundoTab + 1)
+        '26,000.00
         pSubtotal = pLinea.Substring(_SegundoTab + 1, _Distancia)
 
     End Sub
+
+    Public Sub Print(Line As String)
+        prn.SendStringToPrinter(PrinterNameTermica, Line + vbLf)
+    End Sub
+
+    Public Sub Println(Line As String)
+        prn.SendStringToPrinter(PrinterNameTermica, Line)
+    End Sub
+
+    Public Sub EndPrint()
+        prn.ClosePrint()
+    End Sub
+
+    Public Sub PrintFooterBn()
+        Print(vbLf + vbLf + vbLf + vbLf + vbLf + vbLf + eCut)
+    End Sub
+
+    Public Sub StartPrint()
+        prn.OpenPrint(PrinterNameTermica)
+    End Sub
+
+    Public Sub StartPrintTiquete(ByVal p_longitudImpresion As Integer)
+        prn.OpenPrint(PrinterNameTermica)
+        _LongitudImpresion = p_longitudImpresion
+    End Sub
+
 End Module
