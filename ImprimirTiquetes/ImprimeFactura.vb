@@ -261,6 +261,9 @@ Module ImprimeFactura
     '   5) Telefono
     '   6) Email
     Public Sub PrintHeader(ByVal p_Empresa As String, ByVal p_Datos As Array)
+        '   " ===================================   "
+        '   "          NombreEmpresa                "
+        '   "    =============================      "
         If My.Settings.FontSize = 1 Then
             Print(eInit + eSmlText + eCentre + "".PadLeft((_LongitudImpresion - 2), "="))
             Print(eBigText + eNegritaOn + eCentre + p_Empresa + eNegritaOff)
