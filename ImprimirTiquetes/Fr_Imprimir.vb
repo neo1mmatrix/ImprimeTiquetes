@@ -13,8 +13,7 @@ Public Class Fr_Imprimir
 
         CargarConfiguracion()
         _Segundos = 0
-        lbSegundos.Visible = False
-        timerCuentaRegresiva.Start()
+
 
     End Sub
 
@@ -186,6 +185,12 @@ Public Class Fr_Imprimir
         _LongitudImpresion = My.Settings.LongitudLinea
         PrinterNameTermica = _PrinterName
         _Tiempo = My.Settings.TiempoEspera
+        lbSegundos.Visible = False
+        If My.Settings.AutoClose = 0 Then
+            timerCuentaRegresiva.Start()
+        Else
+            timerCuentaRegresiva.Stop()
+        End If
 
     End Sub
 

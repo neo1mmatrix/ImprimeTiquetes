@@ -42,6 +42,11 @@ Public Class Fr_Configuracion
             ElseIf rbNormalSize.Checked Then
                 My.Settings.FontSize = 2
             End If
+            If nudTiempo.Value = 101 Then
+                My.Settings.AutoClose = 1
+            Else
+                My.Settings.AutoClose = 0
+            End If
             My.Settings.Save()
             Fr_Imprimir.CargarConfiguracion()
             MsgBox("Configuración Guardada")

@@ -116,6 +116,9 @@ Module ImprimeFactura
             ElseIf p_tiquete.Lines(i).Contains("Desc: ") Then
                 Println("".PadRight(9, _Espacios))
                 Print(p_tiquete.Lines(i).ToString)
+            ElseIf p_tiquete.Lines(i).Contains("IVA:") Then
+                Println("".PadRight(9, _Espacios))
+                Print(p_tiquete.Lines(i).ToString)
             End If
 
             If p_tiquete.Lines(i).Contains("Exentas") Or p_tiquete.Lines(i).Contains("Gravadas") Then

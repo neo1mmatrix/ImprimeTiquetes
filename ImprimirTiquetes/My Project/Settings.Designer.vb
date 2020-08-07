@@ -101,6 +101,18 @@ Namespace My
                 Me("TiempoEspera") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property AutoClose() As Integer
+            Get
+                Return CType(Me("AutoClose"),Integer)
+            End Get
+            Set
+                Me("AutoClose") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
