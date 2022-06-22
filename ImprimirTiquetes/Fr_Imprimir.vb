@@ -1,19 +1,20 @@
 ﻿Imports System.Text.RegularExpressions
+
 Public Class Fr_Imprimir
 
     Dim _Segundos As Integer = 0
+
     '1 = Letra Normal
     '2 = Letra Mediana
     Dim _TipoImpresora As Integer
+
     Dim _PrinterName As String
     Dim _Tiempo As Integer = 0
-
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         CargarConfiguracion()
         _Segundos = 0
-
 
     End Sub
 
@@ -78,13 +79,13 @@ Public Class Fr_Imprimir
         Dim _DatosCliente() As String = list.ToArray
 
         StartPrint()
-        If prn.PrinterIsOpen = True Then
-            PrintHeader(_Propietario, _DatosSucursal)
-            PrintDetalles(_TipoDocumento, _ClienteNombre, _DatosCliente)
-            PrintTiqueteElectonico(txtTiquete)
-            PrintFooterTiquete(txtTiquete)
-            EndPrint()
-        End If
+        'If prn.PrinterIsOpen = True Then
+        '    PrintHeader(_Propietario, _DatosSucursal)
+        '    PrintDetalles(_TipoDocumento, _ClienteNombre, _DatosCliente)
+        '    PrintTiqueteElectonico(txtTiquete)
+        '    PrintFooterTiquete(txtTiquete)
+        '    EndPrint()
+        'End If
 
     End Sub
 
@@ -182,8 +183,8 @@ Public Class Fr_Imprimir
 
         _TipoImpresora = My.Settings.FontSize
         _PrinterName = My.Settings.PrinterName
-        _LongitudImpresion = My.Settings.LongitudLinea
-        PrinterNameTermica = _PrinterName
+        _PrinterLong = My.Settings.LongitudLinea
+        'PrinterNameTermica = _PrinterName
         _Tiempo = My.Settings.TiempoEspera
         lbSegundos.Visible = False
         If My.Settings.AutoClose = 0 Then
@@ -210,4 +211,5 @@ Public Class Fr_Imprimir
         End If
 
     End Sub
+
 End Class

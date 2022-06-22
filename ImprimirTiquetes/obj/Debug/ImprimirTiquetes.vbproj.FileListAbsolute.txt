@@ -27,7 +27,6 @@ C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\bin\Deb
 C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\bin\Debug\ImprimirTiquetes.exe
 C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\bin\Debug\ImprimirTiquetes.pdb
 C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\bin\Debug\ImprimirTiquetes.xml
-C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.vbprojAssemblyReference.cache
 C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.Ayuda.resources
 C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.Fr_Configuracion.resources
 C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.Fr_Imprimir.resources
@@ -51,3 +50,5 @@ C:\Users\neo\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug
 C:\Users\neo\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.exe
 C:\Users\neo\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.xml
 C:\Users\neo\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.pdb
+C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.vbproj.AssemblyReference.cache
+C:\Users\estem\source\repos\neo1mmatrix\ImprimeTiquetes\ImprimirTiquetes\obj\Debug\ImprimirTiquetes.vbproj.SuggestedBindingRedirects.cache

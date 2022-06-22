@@ -87,4 +87,8 @@ Public Class Fr_Configuracion
         End If
 
     End Sub
+
+    Private Sub cbPrinterList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbPrinterList.SelectedIndexChanged
+
+    End Sub
 End Class
