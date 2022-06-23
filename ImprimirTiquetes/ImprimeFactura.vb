@@ -374,30 +374,30 @@ Public Module ImprimeFactura
 #Region "Tiquetes BN"
 
     'Imprime los tiquetes del Banco Nacional
-    Public Sub PrintTiqueteBn(ByVal linea1 As TextBox)
+    Public Sub PrintTiqueteBn(ByVal linea1 As Array)
 
         Print(eDrawer)
         Dim _ImprimirLinea As String = ""
         Dim _TamannoDescripcion As Integer = _PrinterLong - 23
 
-        For i As Integer = 0 To linea1.Lines().Length - 2
-            _ImprimirLinea = linea1.Lines(i).ToString
+        For i As Integer = 0 To linea1.Length - 2
+            _ImprimirLinea = linea1(i).ToString
 
             If i = 0 Then
                 'Imprime Nombre de la empresa
                 If My.Settings.FontSize = 1 Then
                     Print(eSmlText + eNegritaOn + eCentre + _ImprimirLinea + eNegritaOff)
-                    Print(eSmlText + eCentre + linea1.Lines(1).ToString + eNegritaOff)
+                    Print(eSmlText + eCentre + linea1(1).ToString + eNegritaOff)
                     Print(" ")
                 Else
                     Print(eNmlText + eNegritaOn + eCentre + _ImprimirLinea + eNegritaOff)
-                    Print(eNmlText + eCentre + linea1.Lines(1).ToString + eNegritaOff)
+                    Print(eNmlText + eCentre + linea1(1).ToString + eNegritaOff)
                     Print(" ")
                 End If
 
             End If
             If i > 1 Then
-                Print(eLeft + linea1.Lines(i).ToString)
+                Print(eLeft + linea1(i).ToString)
             End If
         Next
 
