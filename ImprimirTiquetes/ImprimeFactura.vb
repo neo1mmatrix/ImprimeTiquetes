@@ -404,7 +404,7 @@ Public Module ImprimeFactura
     End Sub
 
     Public Sub PrintFooterBn()
-        Print(vbLf + vbLf + vbLf + vbLf + vbLf + vbLf + eCut)
+        Print(vbLf + vbLf + eDrawer + vbLf + vbLf + vbLf + vbLf + eCut + eDrawer)
     End Sub
 
 #End Region
